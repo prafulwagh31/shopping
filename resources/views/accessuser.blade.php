@@ -38,27 +38,32 @@
                     <div class="form-group">
                       <label for="exampleInputUsername1">Name</label>
                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Name" name="name" value="<?php echo $editaccessuser->name;?>">
+                      <span style="color:red;">{{ $errors->first('name') }}</span>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputUsername1">Role</label>
-                      <select name="role" class="form-control">
-                          <option>Select Role</option>
+                      <select name="role_id" class="form-control">
+                          <option value="">Select Role</option>
                           <?php foreach($roles as $roles){?>
                             <option value="{{$roles->id}}">{{$roles->role}}</option>
                           <?php }?>
                       </select>
+                      <span style="color:red;">{{ $errors->first('role_id') }}</span>
                     </div>
                      <div class="form-group">
                       <label for="exampleInputUsername1">User Name</label>
                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="User Name" name="username" value="<?php echo $editaccessuser->username;?>">
+                      <span style="color:red;">{{ $errors->first('username') }}</span>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputUsername1">Email</label>
                       <input type="email" class="form-control" id="exampleInputUsername1" placeholder="Email" name="email" value="<?php echo $editaccessuser->email;?>">
+                      <span style="color:red;">{{ $errors->first('email') }}</span>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputUsername1">Password</label>
                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Password" name="password" value="<?php echo $editaccessuser->password;?>">
+                      <span style="color:red;">{{ $errors->first('password') }}</span>
                     </div>
                     <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
                     
@@ -78,19 +83,22 @@
                     <div class="form-group">
                       <label for="exampleInputUsername1">Name</label>
                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Name" name="name">
+                      <span style="color:red;">{{ $errors->first('name') }}</span>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputUsername1">Role</label>
-                      <select name="role" class="form-control">
-                          <option>Select Role</option>
+                      <select name="role_id" class="form-control">
+                          <option value="">Select Role</option>
                           <?php foreach($roles as $roles){?>
                             <option value="{{$roles->id}}">{{$roles->role}}</option>
                           <?php }?>
                       </select>
+                      <span style="color:red;">{{ $errors->first('role_id') }}</span>
                     </div>
                      <div class="form-group">
                       <label for="exampleInputUsername1">User Name</label>
                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="User Name" name="username">
+                      <span style="color:red;">{{ $errors->first('username') }}</span>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputUsername1">Email</label>
@@ -99,6 +107,7 @@
                     <div class="form-group">
                       <label for="exampleInputUsername1">Password</label>
                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Password" name="password">
+                      <span style="color:red;">{{ $errors->first('password') }}</span>
                     </div>
                     
                     

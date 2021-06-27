@@ -44,52 +44,62 @@
                         <label><strong>Organization Details</strong></label>
                         <div class="row">
                         <div class="form-group col-md-6">
-                          <label for="exampleInputUsername1">Organization Name  *</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="oname" value="<?php echo $editorganization->organization_name;?>">
+                          <label for="exampleInputUsername1">Organization Name</label>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="organization_name" value="<?php echo $editorganization->organization_name;?>">
+                          <span style="color:red;">{{ $errors->first('organization_name') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Website</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="owebsite" value="<?php echo $editorganization->website;?>">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="website" value="<?php echo $editorganization->website;?>">
+                          <span style="color:red;">{{ $errors->first('website') }}</span>
                         </div>
                         </div>
                         <div class="row">
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Primary Phone </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="ophone"  value="<?php echo $editorganization->primary_phone;?>">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="primary_phone"  value="<?php echo $editorganization->primary_phone;?>">
+                          <span style="color:red;">{{ $errors->first('primary_phone') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Ticker Symbol  </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="tsymbol"  value="<?php echo $editorganization->ticker_symbol;?>">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="ticker_symbol"  value="<?php echo $editorganization->ticker_symbol;?>">
+                           <span style="color:red;">{{ $errors->first('ticker_symbol') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Fax</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="ofax" value="<?php echo $editorganization->fax;?>">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="fax" value="<?php echo $editorganization->fax;?>">
+                          <span style="color:red;">{{ $errors->first('fax') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Member Of</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Type to Search" value="<?php echo $editorganization->member_of;?>" name="memberof">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Type to Search" value="<?php echo $editorganization->member_of;?>" name="member_of">
+                          <span style="color:red;">{{ $errors->first('member_of') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Secondary Phone </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sophone" value="<?php echo $editorganization->secondary_phone;?>">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="secondary_phone" value="<?php echo $editorganization->secondary_phone;?>">
+                          <span style="color:red;">{{ $errors->first('secondary_phone') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Employees</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="oemployee" value="<?php echo $editorganization->employees;?>">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="employees" value="<?php echo $editorganization->employees;?>">
+                          <span style="color:red;">{{ $errors->first('employees') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Primary Email </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="opemail" value="<?php echo $editorganization->primary_email;?>">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="primary_email" value="<?php echo $editorganization->primary_email;?>">
+                          <span style="color:red;">{{ $errors->first('primary_email') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Secondary Email</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="osemail" value="<?php echo $editorganization->secondary_email;?>">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="secondary_email" value="<?php echo $editorganization->secondary_email;?>">
+                          <span style="color:red;">{{ $errors->first('secondary_email') }}</span>
                         </div>
                         </div>
                         <div class="row">
@@ -99,7 +109,7 @@
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Industry</label>
-                          <select class="form-control" name="oindustry" id="industries" value="<?php echo $editorganization->industry;?>"  onchange="getexternallink(this)">
+                          <select class="form-control" name="industry" id="industries" value="<?php echo $editorganization->industry;?>"  onchange="getexternallink(this)">
                                 	<option value="">Select an Option</option>
                                 	<option value="Apparel">Apparel</option>
                                 	<option value="Banking">Banking</option>
@@ -134,12 +144,13 @@
                                 	<option value="Other">Other</option>
                                 
                             </select>
+                            <span style="color:red;">{{ $errors->first('industry') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Rating</label>
-                          <select class="form-control" name="orate" id="rating" value="<?php echo $editorganization->rating;?>" onchange="getexternallink(this)">
+                          <select class="form-control" name="rating" id="rating" value="<?php echo $editorganization->rating;?>" onchange="getexternallink(this)">
                                 	<option value="">Select an Option</option>
                                 	<option value="Acquired">Acquired</option>
                                 	<option value="Active">Active</option>
@@ -148,10 +159,11 @@
                                 	<option value="Shutdown">Shutdown</option>
                                 
                             </select>
+                            <span style="color:red;">{{ $errors->first('rating') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Type</label>
-                          <select class="form-control" name="typeorg" id="type" value="<?php echo $editorganization->type;?>" onchange="getexternallink(this)">
+                          <select class="form-control" name="type" id="type" value="<?php echo $editorganization->type;?>" onchange="getexternallink(this)">
                                 	<option value="">Select an Option</option>
                                 	<option value="Analyst">Analyst</option>
                                 	<option value="Competitor">Competitor</option>
@@ -165,12 +177,14 @@
                                 	<option value="Other">Other</option>
                                 
                             </select>
+                            <span style="color:red;">{{ $errors->first('type') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">SIC Code</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->sic_code;?>" name="sisccode">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->sic_code;?>" name="sic_code">
+                          <span style="color:red;">{{ $errors->first('sic_code') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Email Opt Out  </label><br>
@@ -182,12 +196,13 @@
                           <label for="exampleInputUsername1">Annual Revenue</label><br>
                           <div class="input-group">
                         	<span class="input-group-addon">$</span>
-                        	<input id="Accounts_editView_fieldName_annual_revenue" type="text" class="form-control" value="<?php echo $editorganization->annual_revenue;?>" name="oannualrevenue" value="" data-rule-currency="true">
+                        	<input id="Accounts_editView_fieldName_annual_revenue" type="text" class="form-control" value="<?php echo $editorganization->annual_revenue;?>" name="annual_revenue" value="" data-rule-currency="true">
+                          <span style="color:red;">{{ $errors->first('annual_revenue') }}</span>
                          </div>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Assigned To</label>
-                          <select class="form-control" name="oassignedto" id="assign" value="<?php echo $editorganization->assigned_to;?>" onchange="getexternallink(this)">
+                          <select class="form-control" name="assigned_to" id="assign" value="<?php echo $editorganization->assigned_to;?>" onchange="getexternallink(this)">
                                 <optgroup label="Users" data-select2-id="199">
                 					<option selected="selected" value="1" data-select2-id="140">Alexa</option>
                 				</optgroup>
@@ -198,6 +213,7 @@
                                 </optgroup>	
                                 
                           </select>
+                          <span style="color:red;">{{ $errors->first('assigned_to') }}</span>
                         </div>
                         </div>
                         <div class="row">
@@ -213,62 +229,74 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Billing Address </label>
-                               <textarea class="form-control" id="exampleTextarea1" rows="4" name="description"><?php echo $editorganization->billing_address;?></textarea>
+                               <textarea class="form-control" id="exampleTextarea1" rows="4" name="billing_address"><?php echo $editorganization->billing_address;?></textarea>
+                               <span style="color:red;">{{ $errors->first('billing_address') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Shipping Address</label>
-                              <textarea class="form-control" id="exampleTextarea1" rows="4" name="otherdescription"><?php echo $editorganization->shipping_address;?></textarea>
+                              <textarea class="form-control" id="exampleTextarea1" rows="4" name="shipping_address"><?php echo $editorganization->shipping_address;?></textarea>
+                              <span style="color:red;">{{ $errors->first('shipping_address') }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                          <label for="exampleInputUsername1">Billing PO Box </label>
-                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_pobox;?>" name="bbox">
+                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_pobox;?>" name="billing_pobox">
+                         <span style="color:red;">{{ $errors->first('billing_pobox') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Shipping PO Box </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->shipping_pobox;?>" name="sbox">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->shipping_pobox;?>" name="shipping_pobox">
+                          <span style="color:red;">{{ $errors->first('shipping_pobox') }}</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                          <label for="exampleInputUsername1">Billing City</label>
-                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_city;?>" name="bcity">
+                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_city;?>" name="billing_city">
+                         <span style="color:red;">{{ $errors->first('billing_city') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Shipping City</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->shipping_city;?>" name="scity">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->shipping_city;?>" name="shipping_city">
+                          <span style="color:red;">{{ $errors->first('shipping_city') }}</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                          <label for="exampleInputUsername1">Billing State</label>
-                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_state;?>" name="bstate">
+                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_state;?>" name="billing_state">
+                         <span style="color:red;">{{ $errors->first('billing_state') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Shipping State </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->shipping_state;?>" name="sstate">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->shipping_state;?>" name="shipping_state">
+                          <span style="color:red;">{{ $errors->first('shipping_state') }}</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                          <label for="exampleInputUsername1">Billing Postal Code</label>
-                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_postalcode;?>" name="bpostalcode">
+                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_postalcode;?>" name="billing_postalcode">
+                         <span style="color:red;">{{ $errors->first('billing_postalcode') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Shipping Postal Code</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->shipping_postalcode;?>" name="spostalcode">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->shipping_postalcode;?>" name="shipping_postalcode">
+                          <span style="color:red;">{{ $errors->first('shipping_postalcode') }}</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                          <label for="exampleInputUsername1">Billing Country</label>
-                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_country;?>" name="bcountry">
+                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_country;?>" name="billing_country">
+                         <span style="color:red;">{{ $errors->first('billing_country') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Shipping Country</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_country;?>" name="scountry">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $editorganization->billing_country;?>" name="shipping_country">
+                          <span style="color:red;">{{ $errors->first('shipping_country') }}</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -276,7 +304,8 @@
                         <div class="row">
                         <div class="form-group col-md-6">
                         <label for="exampleInputUsername1">Description</label>
-                          <textarea class="form-control" id="exampleTextarea1" rows="4" name="descriptiondata"><?php echo $editorganization->descriptionorg;?></textarea>
+                          <textarea class="form-control" id="exampleTextarea1" rows="4" name="descriptionorg"><?php echo $editorganization->descriptionorg;?></textarea>
+                          <span style="color:red;">{{ $errors->first('descriptionorg') }}</span>
                         </div>
                         </div>
                     </div>
@@ -302,62 +331,73 @@
                         <label><strong>Organization Details</strong></label>
                         <div class="row">
                         <div class="form-group col-md-6">
-                          <label for="exampleInputUsername1">Organization Name  *</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="oname">
+                          <label for="exampleInputUsername1">Organization Name</label>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="organization_name">
+                          <span style="color:red;">{{ $errors->first('organization_name') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Website</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="owebsite">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="website">
+                          <span style="color:red;">{{ $errors->first('website') }}</span>
                         </div>
                         </div>
                         <div class="row">
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Primary Phone </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="ophone">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="primary_phone">
+                          <span style="color:red;">{{ $errors->first('primary_phone') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Ticker Symbol  </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="tsymbol">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="ticker_symbol">
+                          <span style="color:red;">{{ $errors->first('ticker_symbol') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Fax</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="ofax">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="fax">
+                          <span style="color:red;">{{ $errors->first('fax') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Member Of</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Type to Search" name="memberof">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Type to Search" name="member_of">
+                          <span style="color:red;">{{ $errors->first('member_of') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Secondary Phone </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sophone">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="secondary_phone">
+                          <span style="color:red;">{{ $errors->first('secondary_phone') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Employees</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="oemployee">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="employees">
+                          <span style="color:red;">{{ $errors->first('employees') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Primary Email </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="opemail">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="primary_email">
+                          <span style="color:red;">{{ $errors->first('primary_email') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Secondary Email</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="osemail">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="secondary_email">
+                          <span style="color:red;">{{ $errors->first('secondary_email') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Ownership</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="oownership">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="ownership">
+                          <span style="color:red;">{{ $errors->first('ownership') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Industry</label>
-                          <select class="form-control" name="oindustry" id="industries"  onchange="getexternallink(this)">
+                          <select class="form-control" name="industry" id="industries"  onchange="getexternallink(this)">
                                 	<option value="">Select an Option</option>
                                 	<option value="Apparel">Apparel</option>
                                 	<option value="Banking">Banking</option>
@@ -392,12 +432,13 @@
                                 	<option value="Other">Other</option>
                                 
                             </select>
+                            <span style="color:red;">{{ $errors->first('industry') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Rating</label>
-                          <select class="form-control" name="orate" id="rating"  onchange="getexternallink(this)">
+                          <select class="form-control" name="rating" id="rating"  onchange="getexternallink(this)">
                                 	<option value="">Select an Option</option>
                                 	<option value="Acquired">Acquired</option>
                                 	<option value="Active">Active</option>
@@ -406,10 +447,11 @@
                                 	<option value="Shutdown">Shutdown</option>
                                 
                             </select>
+                            <span style="color:red;">{{ $errors->first('rating') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Type</label>
-                          <select class="form-control" name="typeorg" id="type"  onchange="getexternallink(this)">
+                          <select class="form-control" name="type" id="type"  onchange="getexternallink(this)">
                                 	<option value="">Select an Option</option>
                                 	<option value="Analyst">Analyst</option>
                                 	<option value="Competitor">Competitor</option>
@@ -423,12 +465,14 @@
                                 	<option value="Other">Other</option>
                                 
                             </select>
+                            <span style="color:red;">{{ $errors->first('type') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">SIC Code</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sisccode">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sic_code">
+                          <span style="color:red;">{{ $errors->first('sic_code') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Email Opt Out  </label><br>
@@ -440,12 +484,13 @@
                           <label for="exampleInputUsername1">Annual Revenue</label><br>
                           <div class="input-group">
                         	<span class="input-group-addon">$</span>
-                        	<input id="Accounts_editView_fieldName_annual_revenue" type="text" class="form-control" name="oannualrevenue" value="" data-rule-currency="true">
+                        	<input id="Accounts_editView_fieldName_annual_revenue" type="text" class="form-control" name="annual_revenue" value="" data-rule-currency="true">
+                          <span style="color:red;">{{ $errors->first('annual_revenue') }}</span>
                          </div>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Assigned To</label>
-                          <select class="form-control" name="oassignedto" id="assign"  onchange="getexternallink(this)">
+                          <select class="form-control" name="assigned_to" id="assign"  onchange="getexternallink(this)">
                                 <optgroup label="Users" data-select2-id="199">
                 					<option selected="selected" value="1" data-select2-id="140">Alexa</option>
                 				</optgroup>
@@ -456,6 +501,7 @@
                                 </optgroup>	
                                 
                           </select>
+                          <span style="color:red;">{{ $errors->first('assigned_to') }}</span>
                         </div>
                         </div>
                         <div class="row">
@@ -471,62 +517,74 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Billing Address </label>
-                               <textarea class="form-control" id="exampleTextarea1" rows="4" name="description"></textarea>
+                               <textarea class="form-control" id="exampleTextarea1" rows="4" name="billing_address"></textarea>
+                               <span style="color:red;">{{ $errors->first('billing_address') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Shipping Address</label>
-                              <textarea class="form-control" id="exampleTextarea1" rows="4" name="otherdescription"></textarea>
+                              <textarea class="form-control" id="exampleTextarea1" rows="4" name="shipping_address"></textarea>
+                              <span style="color:red;">{{ $errors->first('shipping_address') }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                          <label for="exampleInputUsername1">Billing PO Box </label>
-                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="bbox">
+                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="billing_pobox">
+                         <span style="color:red;">{{ $errors->first('billing_pobox') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Shipping PO Box </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sbox">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="shipping_pobox">
+                          <span style="color:red;">{{ $errors->first('shipping_pobox') }}</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                          <label for="exampleInputUsername1">Billing City</label>
-                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="bcity">
+                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="billing_city">
+                         <span style="color:red;">{{ $errors->first('billing_city') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Shipping City</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="scity">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="shipping_city">
+                          <span style="color:red;">{{ $errors->first('shipping_city') }}</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                          <label for="exampleInputUsername1">Billing State</label>
-                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="bstate">
+                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="billing_state">
+                         <span style="color:red;">{{ $errors->first('billing_state') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Shipping State </label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sstate">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="shipping_state">
+                          <span style="color:red;">{{ $errors->first('shipping_state') }}</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                          <label for="exampleInputUsername1">Billing Postal Code</label>
-                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="bpostalcode">
+                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="billing_postalcode">
+                         <span style="color:red;">{{ $errors->first('billing_postalcode') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Shipping Postal Code</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="spostalcode">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="shipping_postalcode">
+                          <span style="color:red;">{{ $errors->first('shipping_postalcode') }}</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                          <label for="exampleInputUsername1">Billing Country</label>
-                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="bcountry">
+                         <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="billing_country">
+                         <span style="color:red;">{{ $errors->first('billing_country') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Shipping Country</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="scountry">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="shipping_country">
+                          <span style="color:red;">{{ $errors->first('shipping_country') }}</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -534,7 +592,8 @@
                         <div class="row">
                         <div class="form-group col-md-6">
                         <label for="exampleInputUsername1">Description</label>
-                          <textarea class="form-control" id="exampleTextarea1" rows="4" name="descriptiondata"></textarea>
+                          <textarea class="form-control" id="exampleTextarea1" rows="4" name="descriptionorg"></textarea>
+                          <span style="color:red;">{{ $errors->first('descriptionorg') }}</span>
                         </div>
                         </div>
                     </div>

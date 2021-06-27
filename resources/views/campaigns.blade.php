@@ -44,7 +44,8 @@
                         <div class="row">
                         <div class="form-group col-md-12">
                           <label for="exampleInputUsername1">Campaign Name</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="fname" value="<?php echo $editcampaigns->campaign_name;?>" required>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="campaign_name" value="<?php echo $editcampaigns->campaign_name;?>">
+                          <span style="color:red;">{{ $errors->first('campaign_name') }}</span>
                         </div><br><br>
                        
                         
@@ -52,8 +53,8 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Assigned Sales Group</label>
-                                  <select class="form-control"  name="salegroupleads" required>
-                                      <option></option>
+                                  <select class="form-control"  name="sales_group">
+                                      <option value=""></option>
                                         <?php
                                         foreach($salesuser as $salesuser)
                                         { ?>
@@ -61,12 +62,13 @@
                                                 <?php }
                                                 ?>
                                 </select>
+                                <span style="color:red;">{{ $errors->first('sales_group') }}</span>
                             </div><br><br>  
                            
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Assigned Sales User</label>
-                                  <select class="form-control"  name="saleuserleads" required>
-                                      <option></option>
+                                  <select class="form-control"  name="sales_user">
+                                      <option value=""></option>
                                         <?php
                                         foreach($access_users as $access_users)
                                         { ?>
@@ -74,13 +76,14 @@
                                                 <?php }
                                                 ?>
                                 </select>
+                                <span style="color:red;">{{ $errors->first('sales_user') }}</span>
                             </div>
                             
                         </div>
                         <div class="row">
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Campaign Status</label>
-                            <select class="form-control" name="campa" id="campaignstatus" value="<?php echo $editcampaigns->campaign_status;?>" onchange="getexternallink(this)" required>
+                            <select class="form-control" name="campaign_status" id="campaignstatus" value="<?php echo $editcampaigns->campaign_status;?>" onchange="getexternallink(this)">
                                 <option></option>
                 				<option value="Planning" color="#D9D9D9" presence="1" data-select2-id="162">Planning</option>
                 				<option value="Active" color="#5ACCDB" presence="1" data-select2-id="170">Active</option>
@@ -88,11 +91,12 @@
                 				<option value="Completed" color="#00FF00" presence="1" data-select2-id="167" selected="selected">Completed</option>
                 				<option value="Cancelled" color="#C48923" presence="1" data-select2-id="168">Canceled</option>
                 			 </select>
+                       <span style="color:red;">{{ $errors->first('campaign_status') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Campaign Type</label>
-                            <select class="form-control" name="campaign" id="campaigntype" value="<?php echo $editcampaigns->campaign_type;?>" onchange="getexternallink(this)" required>
-                                <option></option>
+                            <select class="form-control" name="campaign_type" id="campaigntype" value="<?php echo $editcampaigns->campaign_type;?>" onchange="getexternallink(this)">
+                                <option value=""></option>
                 				<option value="Conference" presence="1" data-select2-id="182">Conference</option>
                 				<option value="Webinar" presence="1" data-select2-id="183">Webinar</option>
                 				<option value="Trade Show" presence="1" data-select2-id="184">Trade Show</option>
@@ -107,14 +111,15 @@
                 				<option value="Others" presence="1" data-select2-id="193">Others</option>
                                 
                             </select>
+                            <span style="color:red;">{{ $errors->first('campaign_type') }}</span>
                         </div>
                         </div>
                     
                     <div class="row">
                     <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Product</label>
-                          <select class="form-control" name="productcategory" required>
-                              <option></option>
+                          <select class="form-control" name="product" required>
+                              <option value=""></option>
                               <?php
                               foreach($category as $category)
                               {?>
@@ -125,31 +130,36 @@
                               
                               ?>
                               </select>
-                           
+                           <span style="color:red;">{{ $errors->first('product') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Target Audience</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="targetaudience" value="<?php echo $editcampaigns->target_audience;?>">
+                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="target_audience" value="<?php echo $editcampaigns->target_audience;?>">
+                            <span style="color:red;">{{ $errors->first('target_audience') }}</span>
                         </div>
                     </div>
                     <div class="row">
                     <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Expected Close Date</label>
-                            <input type="date" class="form-control" id="exampleInputUsername1" placeholder="" name="closingdate" value="<?php echo $editcampaigns->closedate;?>">
+                            <input type="date" class="form-control" id="exampleInputUsername1" placeholder="" name="closedate" value="<?php echo $editcampaigns->closedate;?>">
+                            <span style="color:red;">{{ $errors->first('closedate') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Sponsor</label>
                             <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sponsor" value="<?php echo $editcampaigns->sponsor;?>">
+                            <span style="color:red;">{{ $errors->first('sponsor') }}</span>
                         </div>
                     </div>
                     <div class="row">
                     <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">TargetSize</label>
                             <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="targetsize" value="<?php echo $editcampaigns->targetsize;?>">
+                            <span style="color:red;">{{ $errors->first('targetsize') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Num Sent</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="numsent" value="<?php echo $editcampaigns->num_sent;?>">
+                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="num_sent" value="<?php echo $editcampaigns->num_sent;?>">
+                            <span style="color:red;">{{ $errors->first('num_sent') }}</span>
                         </div>
                     </div>
                 </div>
@@ -158,57 +168,67 @@
                         <div class="row">
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Budget Cost</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="budgetcost" value="<?php echo $editcampaigns->budget_cost;?>">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="budget_cost" value="<?php echo $editcampaigns->budget_cost;?>">
+                          <span style="color:red;">{{ $errors->first('budget_cost') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Actual Cost</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualcost" value="<?php echo $editcampaigns->actual_cost;?>">
+                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actual_cost" value="<?php echo $editcampaigns->actual_cost;?>">
+                            <span style="color:red;">{{ $errors->first('actual_cost') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Expected Response</label>
-                                <select class="form-control" name="expeceted" id="expected" value="<?php echo $editcampaigns->expeceted_response;?>"  onchange="getexternallink(this)">
-                                    <option value="" data-select2-id="148">Select an Option</option>
+                                <select class="form-control" name="expeceted_response" id="expected" value="<?php echo $editcampaigns->expeceted_response;?>"  onchange="getexternallink(this)">
+                                    <option value="">Select an Option</option>
                     				<option value="Excellent" color="#D9D9D9" presence="1" data-select2-id="162">Excellent</option>
                     				<option value="Good" color="#5ACCDB" presence="1" data-select2-id="170">Good</option>
                     				<option value="Average" color="#CF9948" presence="1" data-select2-id="171">Average</option>
                     				<option value="Poor" color="#00FF00" presence="1" data-select2-id="167" selected="selected">Poor</option>
                     			 </select>
+                           <span style="color:red;">{{ $errors->first('expeceted_response') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Expected Revenue</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expectedrevenue" value="<?php echo $editcampaigns->expected_revenue;?>">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expected_revenue" value="<?php echo $editcampaigns->expected_revenue;?>">
+                               <span style="color:red;">{{ $errors->first('expected_revenue') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Expected Sales Count</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expectedsalescount" value="<?php echo $editcampaigns->sales_count;?>">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sales_count" value="<?php echo $editcampaigns->sales_count;?>">
+                                <span style="color:red;">{{ $errors->first('sales_count') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Actual Sales Count</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualsalescount" value="<?php echo $editcampaigns->actualsales_count;?>">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualsales_count" value="<?php echo $editcampaigns->actualsales_count;?>">
+                                <span style="color:red;">{{ $errors->first('actualsales_count') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Expected Response Count</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expectedresponsecount" value="<?php echo $editcampaigns->response_count;?>">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="response_count" value="<?php echo $editcampaigns->response_count;?>">
+                                <span style="color:red;">{{ $errors->first('response_count') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Actual Response Count</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualresponsecount" value="<?php echo $editcampaigns->actualresponse_count;?>">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualresponse_count" value="<?php echo $editcampaigns->actualresponse_count;?>">
+                                <span style="color:red;">{{ $errors->first('actualresponse_count') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Expected ROI</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expectedroi" value="<?php echo $editcampaigns->expecetd_roi;?>">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expecetd_roi" value="<?php echo $editcampaigns->expecetd_roi;?>">
+                                <span style="color:red;">{{ $errors->first('expecetd_roi') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Actual ROI</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualroi" value="<?php echo $editcampaigns->actual_roi;?>">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actual_roi" value="<?php echo $editcampaigns->actual_roi;?>">
+                                <span style="color:red;">{{ $errors->first('actual_roi') }}</span>
                             </div>
                         </div>
                     
@@ -218,7 +238,8 @@
                      <div class="row">
                         <div class="form-group col-md-6">
                         <label for="exampleInputUsername1">Description</label>
-                          <textarea class="form-control" id="exampleTextarea1" rows="4" name="descriptiondatacampaign"><?php echo $editcampaigns->description_campaign;?></textarea>
+                          <textarea class="form-control" id="exampleTextarea1" rows="4" name="description_campaign"><?php echo $editcampaigns->description_campaign;?></textarea>
+                          <span style="color:red;">{{ $errors->first('description_campaign') }}</span>
                         </div>
                         </div>
                 </div>
@@ -245,15 +266,16 @@
                         <div class="row">
                         <div class="form-group col-md-12">
                           <label for="exampleInputUsername1">Campaign Name</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="fname" required>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="campaign_name">
+                          <span style="color:red;">{{ $errors->first('campaign_name') }}</span>
                         </div><br><br>
                         
                         </div>
                          <div class="row">
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Assigned Sales Group</label>
-                                  <select class="form-control"  name="salegroupleads" required>
-                                      <option></option>
+                                  <select class="form-control"  name="sales_group">
+                                      <option value=""></option>
                                         <?php
                                         foreach($salesuser as $salesuser)
                                         { ?>
@@ -261,12 +283,13 @@
                                                 <?php }
                                                 ?>
                                 </select>
+                                <span style="color:red;">{{ $errors->first('sales_group') }}</span>
                             </div><br><br>  
                            
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Assigned Sales User</label>
-                                  <select class="form-control"  name="saleuserleads" required>
-                                      <option></option>
+                                  <select class="form-control"  name="sales_user">
+                                      <option value=""></option>
                                         <?php
                                         foreach($access_users as $access_users)
                                         { ?>
@@ -274,25 +297,27 @@
                                                 <?php }
                                                 ?>
                                 </select>
+                                <span style="color:red;">{{ $errors->first('sales_user') }}</span>
                             </div>
                             
                         </div>
                         <div class="row">
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Campaign Status</label>
-                            <select class="form-control" name="campa" id="campaignstatus"  onchange="getexternallink(this)" required>
-                                <option></option>
-                				<option value="Planning" color="#D9D9D9" presence="1" data-select2-id="162">Planning</option>
-                				<option value="Active" color="#5ACCDB" presence="1" data-select2-id="170">Active</option>
-                				<option value="Inactive" color="#CF9948" presence="1" data-select2-id="171">Inactive</option>
-                				<option value="Completed" color="#00FF00" presence="1" data-select2-id="167" selected="selected">Completed</option>
-                				<option value="Cancelled" color="#C48923" presence="1" data-select2-id="168">Canceled</option>
+                            <select class="form-control" name="campaign_status" id="campaignstatus"  onchange="getexternallink(this)">
+                                <option value=""></option>
+                        				<option value="Planning" color="#D9D9D9" presence="1" data-select2-id="162">Planning</option>
+                        				<option value="Active" color="#5ACCDB" presence="1" data-select2-id="170">Active</option>
+                        				<option value="Inactive" color="#CF9948" presence="1" data-select2-id="171">Inactive</option>
+                        				<option value="Completed" color="#00FF00" presence="1" data-select2-id="167" selected="selected">Completed</option>
+                        				<option value="Cancelled" color="#C48923" presence="1" data-select2-id="168">Canceled</option>
+                                <span style="color:red;">{{ $errors->first('campaign_status') }}</span>
                 			 </select>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Campaign Type</label>
-                            <select class="form-control" name="campaign" id="campaigntype"  onchange="getexternallink(this)" required>
-                                <option></option>
+                            <select class="form-control" name="campaign_type" id="campaigntype"  onchange="getexternallink(this)">
+                                <option value=""></option>
                 				<option value="Conference" presence="1" data-select2-id="182">Conference</option>
                 				<option value="Webinar" presence="1" data-select2-id="183">Webinar</option>
                 				<option value="Trade Show" presence="1" data-select2-id="184">Trade Show</option>
@@ -307,14 +332,15 @@
                 				<option value="Others" presence="1" data-select2-id="193">Others</option>
                                 
                             </select>
+                            <span style="color:red;">{{ $errors->first('campaign_type') }}</span>
                         </div>
                         </div>
                     
                     <div class="row">
                     <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Product</label>
-                            <select class="form-control js-example-basic-multiple" name="productcategory"  multiple="multiple" required>
-                              <option></option>
+                            <select class="form-control js-example-basic-multiple" name="product"  multiple="multiple">
+                              <option value=""></option>
                               <?php
                               foreach($category as $category)
                               {?>
@@ -325,30 +351,36 @@
                               
                               ?>
                               </select>
+                              <span style="color:red;">{{ $errors->first('product') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Target Audience</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="targetaudience">
+                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="target_audience">
+                            <span style="color:red;">{{ $errors->first('target_audience') }}</span>
                         </div>
                     </div>
                     <div class="row">
                     <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Expected Close Date</label>
-                            <input type="date" class="form-control" id="exampleInputUsername1" placeholder="" name="closingdate">
+                            <input type="date" class="form-control" id="exampleInputUsername1" placeholder="" name="closedate">
+                            <span style="color:red;">{{ $errors->first('closedate') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Sponsor</label>
                             <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sponsor">
+                            <span style="color:red;">{{ $errors->first('sponsor') }}</span>
                         </div>
                     </div>
                     <div class="row">
                     <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">TargetSize</label>
                             <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="targetsize">
+                            <span style="color:red;">{{ $errors->first('targetsize') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Num Sent</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="numsent">
+                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="num_sent">
+                            <span style="color:red;">{{ $errors->first('num_sent') }}</span>
                         </div>
                     </div>
                 </div>
@@ -357,57 +389,67 @@
                         <div class="row">
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Budget Cost</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="budgetcost">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="budget_cost">
+                          <span style="color:red;">{{ $errors->first('budget_cost') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Actual Cost</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualcost">
+                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actual_cost">
+                            <span style="color:red;">{{ $errors->first('actual_cost') }}</span>
                         </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Expected Response</label>
-                                <select class="form-control" name="expeceted" id="expected"  onchange="getexternallink(this)">
+                                <select class="form-control" name="expeceted_response" id="expected"  onchange="getexternallink(this)">
                                     <option value="" data-select2-id="148">Select an Option</option>
                     				<option value="Excellent" color="#D9D9D9" presence="1" data-select2-id="162">Excellent</option>
                     				<option value="Good" color="#5ACCDB" presence="1" data-select2-id="170">Good</option>
                     				<option value="Average" color="#CF9948" presence="1" data-select2-id="171">Average</option>
                     				<option value="Poor" color="#00FF00" presence="1" data-select2-id="167" selected="selected">Poor</option>
                     			 </select>
+                           <span style="color:red;">{{ $errors->first('expeceted_response') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Expected Revenue</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expectedrevenue">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expected_revenue">
+                                <span style="color:red;">{{ $errors->first('expected_revenue') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Expected Sales Count</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expectedsalescount">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sales_count">
+                                <span style="color:red;">{{ $errors->first('sales_count') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Actual Sales Count</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualsalescount">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualsales_count">
+                                <span style="color:red;">{{ $errors->first('actualsales_count') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Expected Response Count</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expectedresponsecount">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="response_count">
+                                <span style="color:red;">{{ $errors->first('response_count') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Actual Response Count</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualresponsecount">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualresponse_count">
+                                <span style="color:red;">{{ $errors->first('actualresponse_count') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Expected ROI</label>
                                 <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="expectedroi">
+                                <span style="color:red;">{{ $errors->first('expecetd_roi') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Actual ROI</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actualroi">
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="actual_roi">
+                                <span style="color:red;">{{ $errors->first('actual_roi') }}</span>
                             </div>
                         </div>
                     
@@ -417,7 +459,8 @@
                      <div class="row">
                         <div class="form-group col-md-6">
                         <label for="exampleInputUsername1">Description</label>
-                          <textarea class="form-control" id="exampleTextarea1" rows="4" name="descriptiondatacampaign"></textarea>
+                          <textarea class="form-control" id="exampleTextarea1" rows="4" name="description_campaign"></textarea>
+                          <span style="color:red;">{{ $errors->first('description_campaign') }}</span>
                         </div>
                         </div>
                 </div>

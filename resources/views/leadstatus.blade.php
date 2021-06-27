@@ -73,7 +73,8 @@
                       <input type="hidden" name="hiddenid" value="<?php echo $editleadstatus->id;?>">
                      <div class="form-group">
                       <label for="exampleInputUsername1">Lead Status</label>
-                    <input type="text" name="leadstatus" placeholder="Enter Lead Status" class="form-control" value="<?php echo $editleadstatus->lead_status;?>" required>
+                    <input type="text" name="lead_status" placeholder="Enter Lead Status" class="form-control" value="<?php echo $editleadstatus->lead_status;?>">
+                    <span style="color:red;">{{ $errors->first('lead_status') }}</span>
                     </div>
                    
                     
@@ -97,7 +98,8 @@
                       {{ csrf_field() }}
                     <div class="form-group">
                       <label for="exampleInputUsername1">Lead Status</label>
-                    <input type="text" name="leadstatus" placeholder="Enter Lead Status" class="form-control" required>
+                    <input type="text" name="lead_status" placeholder="Enter Lead Status" class="form-control">
+                    <span style="color:red;">{{ $errors->first('lead_status') }}</span>
                     </div>
                      
                    

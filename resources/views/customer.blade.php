@@ -154,23 +154,22 @@
                     <div class="form-group">
                         <label><strong>Customer Overview</strong></label>
                         <div class="row">
-                        <div class="form-group col-md-4">
-                          <label for="exampleInputUsername1">First Name</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="fname">
+                        <div class="form-group col-md-6">
+                          <label for="exampleInputUsername1">Full Name</label>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="name">
+                          <span style="color:red;">{{ $errors->first('name') }}</span>
                         </div><br><br>
-                        <div class="form-group col-md-4">
-                          <label for="exampleInputUsername1">Last Name</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="lname">
-                        </div>
                         </div>
                         <div class="row">
                         <div class="form-group col-md-4">
                           <label for="exampleInputUsername1">Email</label>
                           <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="email">
+                          <span style="color:red;">{{ $errors->first('email') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-4">
                           <label for="exampleInputUsername1">Phone Number</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="pnumber">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="mobile">
+                          <span style="color:red;">{{ $errors->first('mobile') }}</span>
                         </div>
                         </div>
                     </div>
@@ -178,30 +177,31 @@
                     <div class="form-group">
                         <label><strong>Address</strong></label>
                         <div class="row">
-                        <div class="form-group col-md-4">
-                          <label for="exampleInputUsername1">First Name</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="fname">
+                        <div class="form-group col-md-6">
+                          <label for="exampleInputUsername1">Full Name</label>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="name">
+                          <span style="color:red;">{{ $errors->first('name') }}</span>
                         </div><br><br>
-                        <div class="form-group col-md-4">
-                          <label for="exampleInputUsername1">Last Name</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="lname">
-                        </div>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputUsername1">Company</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="companyname">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="company">
+                          <span style="color:red;">{{ $errors->first('company') }}</span>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputUsername1">Address</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="companyaddress">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="address">
+                          <span style="color:red;">{{ $errors->first('address') }}</span>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputUsername1">Apartment, suite, etc.</label>
                           <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="apartment">
+                          <span style="color:red;">{{ $errors->first('apartment') }}</span>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputUsername1">City</label>
                           <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="city">
+                          <span style="color:red;">{{ $errors->first('city') }}</span>
                         </div>
                         <div class="row">
                         <div class="col-md-8">
@@ -209,7 +209,7 @@
                         <label for="exampleInputUsername1">Country/Region</label>
                             <br>
                             <select id="countries" name="country" class="form-control">
-                                <option>Country/Region</option>
+                                <option value="">Country/Region</option>
                                 <?php
                                 foreach($country as $country)
                                 { ?>
@@ -217,32 +217,37 @@
                                 <?php }
                                 ?>
                             </select>
+                            <span style="color:red;">{{ $errors->first('country') }}</span>
                         </div>
                         </div>
                         <div class="col-md-4">
                         <div class="form-group">
                         <label for="exampleInputUsername1">Postal Code</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="pcode">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="postalcode">
+                          <span style="color:red;">{{ $errors->first('postalcode') }}</span>
                         </div>
                         </div>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputUsername1">Phone Number</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="pnumber">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="mobile">
+                          <span style="color:red;">{{ $errors->first('mobile') }}</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label><strong>Notes</strong></label>
                         <div class="form-group">
                         <label for="exampleInputUsername1">Note</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="note">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="notes">
+                          <span style="color:red;">{{ $errors->first('notes') }}</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label><strong>Tags</strong></label>
                         <div class="form-group">
                         <label for="exampleInputUsername1">Tag</label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="tag">
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="tags">
+                          <span style="color:red;">{{ $errors->first('tags') }}</span>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-gradient-primary mr-2">Add Customers</button>
