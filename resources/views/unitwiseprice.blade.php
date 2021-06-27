@@ -40,7 +40,8 @@
                       <input type="hidden" name="hiddenid" value="<?php echo $editunit->id;?>">
                     <div class="form-group">
                       <label for="exampleInputUsername1">Unit</label>
-                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Enter Unit" name="unitname" value="<?php echo $editunit->unit_name;?>" required>
+                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Enter Unit" name="unit_name" value="<?php echo $editunit->unit_name;?>">
+                      <span style="color:red;">{{ $errors->first('unit_name') }}</span>
                     </div>
                     
                     <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
@@ -60,7 +61,8 @@
                       {{ csrf_field() }}
                     <div class="form-group">
                       <label for="exampleInputUsername1">Unit</label>
-                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Enter Unit" name="unitname" required>
+                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Enter Unit" name="unit_name">
+                      <span style="color:red;">{{ $errors->first('unit_name') }}</span>
                     </div>
                     
                     

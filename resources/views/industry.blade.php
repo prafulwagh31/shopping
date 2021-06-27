@@ -73,7 +73,8 @@
                       <input type="hidden" name="hiddenid" value="<?php echo $editindustry->id;?>">
                      <div class="form-group">
                       <label for="exampleInputUsername1">Lead Industry</label>
-                    <input type="text" name="industry" placeholder="Enter Lead Industry" class="form-control" value="<?php echo $editindustry->lead_industry;?>" required>
+                    <input type="text" name="lead_industry" placeholder="Enter Lead Industry" class="form-control" value="<?php echo $editindustry->lead_industry;?>">
+                    <span style="color:red;">{{ $errors->first('lead_industry') }}</span>
                     </div>
                    
                     
@@ -114,7 +115,8 @@
                       {{ csrf_field() }}
                     <div class="form-group">
                       <label for="exampleInputUsername1">Lead Industry</label>
-                    <input type="text" name="industry" placeholder="Enter Lead Industry" class="form-control" required>
+                    <input type="text" name="lead_industry" placeholder="Enter Lead Industry" class="form-control">
+                    <span style="color:red;">{{ $errors->first('lead_industry') }}</span>
                     </div>
                      
                    

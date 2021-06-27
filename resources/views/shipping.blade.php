@@ -37,12 +37,13 @@
                       <input type="hidden" name="hiddenid" value="<?php echo $editshippingzone->id;?>">
                     <div class="form-group">
                       <label for="exampleInputUsername1">Zone name</label>
-                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Zone Name" name="zonename" value="<?php echo $editshippingzone->zone_name;?>" required>
+                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Zone Name" name="zone_name" value="<?php echo $editshippingzone->zone_name;?>">
+                      <span style="color:red;">{{ $errors->first('zone_name') }}</span>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Zone Region</label>
-                      <select class="form-control"  name="zoneregion" value="<?php echo $editshippingzone->zone_region;?>" required>
-                          <option></option>
+                      <select class="form-control"  name="zone_region" value="<?php echo $editshippingzone->zone_region;?>">
+                          <option value=""></option>
                         <?php
                                 foreach($countriesdata as $countriesdata)
                                 { ?>
@@ -50,15 +51,17 @@
                                 <?php }
                                 ?>
                         </select>
+                        <span style="color:red;">{{ $errors->first('zone_region') }}</span>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Shipping Methods</label>
-                      <select class="form-control" name="shippingmethod" value="<?php echo $editshippingzone->shipping_method;?>" required>
-                                <option></option>
+                      <select class="form-control" name="shipping_method" value="<?php echo $editshippingzone->shipping_method;?>">
+                                <option value=""></option>
                                 <?php foreach($shipmethod as $shipmethod) { ?>
                                 <option value="<?php echo $shipmethod->id;?>"><?php echo $shipmethod->title;?></option>
                                 <?php }?>
                             </select>
+                            <span style="color:red;">{{ $errors->first('shipping_method') }}</span>
                     </div>
                     
                     <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>

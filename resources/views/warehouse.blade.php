@@ -37,12 +37,13 @@
                       <input type="hidden" name="hiddenid" value="<?php echo $editwarehosue->id;?>">
                       <div class="form-group">
                      <label for="exampleInputUsername1">Warehouse Name</label>
-                    <input type="text" name="warehousename" placeholder="Enter Warehouse Name" class="form-control" value="{{ $editwarehosue->name}}" required>
+                    <input type="text" name="name" placeholder="Enter Warehouse Name" class="form-control" value="{{ $editwarehosue->name}}">
+                    <span style="color:red;">{{ $errors->first('name') }}</span>
                     </div>
                      <div class="form-group">
                       <label for="exampleInputUsername1">Address</label>
-                       <textarea name="address" class="form-control" required>{{ $editwarehosue->address}}</textarea>
-                   
+                       <textarea name="address" class="form-control">{{ $editwarehosue->address}}</textarea>
+                   <span style="color:red;">{{ $errors->first('address') }}</span>
                     </div>
                    
                     
@@ -63,12 +64,13 @@
                       {{ csrf_field() }}
                     <div class="form-group">
                       <label for="exampleInputUsername1">Warehouse Name</label>
-                    <input type="text" name="warehousename" placeholder="Enter Warehouse Name" class="form-control" required>
+                    <input type="text" name="name" placeholder="Enter Warehouse Name" class="form-control">
+                    <span style="color:red;">{{ $errors->first('name') }}</span>
                     </div>
                      <div class="form-group">
                       <label for="exampleInputUsername1">Address</label>
-                       <textarea name="address" class="form-control" required></textarea>
-                   
+                       <textarea name="address" class="form-control"></textarea>
+                    <span style="color:red;">{{ $errors->first('address') }}</span>
                     </div>
                    
                     

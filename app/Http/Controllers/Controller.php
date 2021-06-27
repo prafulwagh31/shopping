@@ -181,13 +181,13 @@ class Controller extends BaseController
     }
     public function updateaccessuser(Request $request)
     {
-        $info = array(
-            'name' => $request->name,
-            'role_id' => $request->role,
-            'username' => $request->username,
-            'email'   => $request->email,
-            'password' => $request->password
-            );
+        $info = $this->validate($request,[
+                'name' => 'required',
+                'role_id' => 'required',
+                'username' => 'required',
+                'password' => 'required',
+                'email'   => 'required',
+        ]);
         $updateaccessuser = DB::table('access_users')->where(array('id' => $request->hiddenid))->update($info);
        
         if($updateaccessuser == 1)
@@ -237,7 +237,13 @@ class Controller extends BaseController
     }
     public function addaccessuser(Request $request)
     {
-        $info = array('name' => $request->name,'role_id' => $request->role,'username' => $request->username,'password' => $request->password);
+        
+        $info = $this->validate($request,[
+                'name' => 'required',
+                'role_id' => 'required',
+                'username' => 'required',
+                'password' => 'required',
+        ]);
         $data = DB::table('access_users')->insert($info);
         if($data == 1)
         {
@@ -457,30 +463,30 @@ class Controller extends BaseController
     }
     public function addcampaigns(Request $request)
     {
-        $info = array(
-            'campaign_name' => $request->fname,
-            'sales_group' => $request->salegroupleads,
-            'sales_user' => $request->saleuserleads,
-            'campaign_status'   => $request->campa,
-            'campaign_type'   => $request->campaign,
-            'product'   => $request->productsearch,
-            'target_audience'   => $request->targetaudience,
-            'closedate'   => $request->closingdate,
-            'sponsor'   => $request->sponsor,
-            'targetsize'   => $request->targetsize,
-            'num_sent'   => $request->numsent,
-            'budget_cost'   => $request->budgetcost,
-            'actual_cost'   => $request->actualcost,
-            'expeceted_response'   => $request->expeceted,
-            'expected_revenue'   => $request->expectedrevenue,
-            'sales_count'   => $request->expectedsalescount,
-            'actualsales_count'   => $request->actualsalescount,
-            'response_count'   => $request->expectedresponsecount,
-            'actualresponse_count'   => $request->actualresponsecount,
-            'expecetd_roi'   => $request->expectedroi,
-            'actual_roi'   => $request->actualroi,
-            'description_campaign'   => $request->descriptiondatacampaign
-            );
+        $info = $this->validate($request,[
+                'campaign_name' => 'required',
+                'sales_group' => 'required',
+                'sales_user' => 'required',
+                'campaign_status' => 'required',
+                'campaign_type' => 'required',
+                'product' => 'required',
+                'target_audience' => 'required',
+                'closedate' => 'required',
+                'sponsor' => 'required',
+                'targetsize' => 'required',
+                'num_sent' => 'required',
+                'budget_cost' => 'required',
+                'actual_cost' => 'required',
+                'expeceted_response' => 'required',
+                'expected_revenue' => 'required',
+                'sales_count' => 'required',
+                'actualsales_count' => 'required',
+                'response_count' => 'required',
+                'actualresponse_count' => 'required',
+                'expecetd_roi' => 'required',
+                'actual_roi' => 'required',
+                'description_campaign' => 'required',
+        ]);
         $data = DB::table('crm_campaign')->insert($info);
        
         if($data == 1)
@@ -512,30 +518,30 @@ class Controller extends BaseController
     public function updatecampaigns(Request $request)
     {
         
-       $info = array(
-            'campaign_name' => $request->fname,
-             'sales_group' => $request->salegroupleads,
-            'sales_user' => $request->saleuserleads,
-            'campaign_status'   => $request->campa,
-            'campaign_type'   => $request->campaign,
-            'product'   => $request->productsearch,
-            'target_audience'   => $request->targetaudience,
-            'closedate'   => $request->closingdate,
-            'sponsor'   => $request->sponsor,
-            'targetsize'   => $request->targetsize,
-            'num_sent'   => $request->numsent,
-            'budget_cost'   => $request->budgetcost,
-            'actual_cost'   => $request->actualcost,
-            'expeceted_response'   => $request->expeceted,
-            'expected_revenue'   => $request->expectedrevenue,
-            'sales_count'   => $request->expectedsalescount,
-            'actualsales_count'   => $request->actualsalescount,
-            'response_count'   => $request->expectedresponsecount,
-            'actualresponse_count'   => $request->actualresponsecount,
-            'expecetd_roi'   => $request->expectedroi,
-            'actual_roi'   => $request->actualroi,
-            'description_campaign'   => $request->descriptiondatacampaign
-            );
+      $info = $this->validate($request,[
+                'campaign_name' => 'required',
+                'sales_group' => 'required',
+                'sales_user' => 'required',
+                'campaign_status' => 'required',
+                'campaign_type' => 'required',
+                'product' => 'required',
+                'target_audience' => 'required',
+                'closedate' => 'required',
+                'sponsor' => 'required',
+                'targetsize' => 'required',
+                'num_sent' => 'required',
+                'budget_cost' => 'required',
+                'actual_cost' => 'required',
+                'expeceted_response' => 'required',
+                'expected_revenue' => 'required',
+                'sales_count' => 'required',
+                'actualsales_count' => 'required',
+                'response_count' => 'required',
+                'actualresponse_count' => 'required',
+                'expecetd_roi' => 'required',
+                'actual_roi' => 'required',
+                'description_campaign' => 'required',
+        ]);
         
        $updatecampaigns = DB::table('crm_campaign')->where(array('id' => $request->hiddenid))->update($info);
         if($updatecampaigns == 1)
@@ -725,38 +731,39 @@ class Controller extends BaseController
     }
     public function addorganizations(Request $request)
     {
-        $info = array(
-            'organization_name' => $request->oname,
-            'website' => $request->owebsite,
-            'primary_phone'   => $request->ophone,
-            'ticker_symbol'   => $request->tsymbol,
-            'fax'   => $request->ofax,
-            'member_of'   => $request->memberof,
-            'secondary_phone'   => $request->sophone,
-            'employees'   => $request->oemployee,
-            'primary_email'   => $request->opemail,
-            'secondary_email'   => $request->osemail,
-            'ownership'   => $request->oownership,
-            'industry'   => $request->oindustry,
-            'rating'   => $request->orate,
-            'type'   => $request->typeorg,
-            'sic_code'   => $request->sisccode,
-            'annual_revenue'   => $request->oannualrevenue,
-            'assigned_to'   => $request->oassignedto,
-            'billing_address'   => $request->description,
-            'shipping_address'   => $request->otherdescription,
-            'billing_pobox'   => $request->bbox,
-            'shipping_pobox'   => $request->sbox,
-            'billing_city'   => $request->bcity,
-            'shipping_city'   => $request->scity,
-            'billing_state'   => $request->bstate,
-            'shipping_state'   => $request->sstate,
-            'billing_postalcode'   => $request->bpostalcode,
-            'shipping_postalcode'   => $request->spostalcode,
-            'billing_country'   => $request->bcountry,
-            'shipping_country'   => $request->scountry,
-            'descriptionorg'   => $request->descriptiondata,
-            );
+        
+        $info = $this->validate($request,[
+                'organization_name' => 'required',
+                'website' => 'required',
+                'primary_phone' => 'required',
+                'ticker_symbol' => 'required',
+                'fax' => 'required',
+                'member_of' => 'required',
+                'secondary_phone' => 'required',
+                'employees' => 'required',
+                'primary_email' => 'required',
+                'secondary_email' => 'required',
+                'ownership' => 'required',
+                'industry' => 'required',
+                'rating' => 'required',
+                'type' => 'required',
+                'sic_code' => 'required',
+                'annual_revenue' => 'required',
+                'assigned_to' => 'required',
+                'billing_address' => 'required',
+                'shipping_address' => 'required',
+                'billing_pobox' => 'required',
+                'shipping_pobox' => 'required',
+                'billing_city' => 'required',
+                'shipping_city' => 'required',
+                'billing_state' => 'required',
+                'shipping_state' => 'required',
+                'billing_postalcode' => 'required',
+                'shipping_postalcode' => 'required',
+                'billing_country' => 'required',
+                'shipping_country' => 'required',
+                'descriptionorg' => 'required',
+        ]);
         $data = DB::table('crm_organization')->insert($info);
        
         if($data == 1)
@@ -778,38 +785,38 @@ class Controller extends BaseController
     }
     public function updateorganizations(Request $request)
     {
-        $info = array(
-            'organization_name' => $request->oname,
-            'website' => $request->owebsite,
-            'primary_phone'   => $request->ophone,
-            'ticker_symbol'   => $request->tsymbol,
-            'fax'   => $request->ofax,
-            'member_of'   => $request->memberof,
-            'secondary_phone'   => $request->sophone,
-            'employees'   => $request->oemployee,
-            'primary_email'   => $request->opemail,
-            'secondary_email'   => $request->osemail,
-            'ownership'   => $request->oownership,
-            'industry'   => $request->oindustry,
-            'rating'   => $request->orate,
-            'type'   => $request->typeorg,
-            'sic_code'   => $request->sisccode,
-            'annual_revenue'   => $request->oannualrevenue,
-            'assigned_to'   => $request->oassignedto,
-            'billing_address'   => $request->description,
-            'shipping_address'   => $request->otherdescription,
-            'billing_pobox'   => $request->bbox,
-            'shipping_pobox'   => $request->sbox,
-            'billing_city'   => $request->bcity,
-            'shipping_city'   => $request->scity,
-            'billing_state'   => $request->bstate,
-            'shipping_state'   => $request->sstate,
-            'billing_postalcode'   => $request->bpostalcode,
-            'shipping_postalcode'   => $request->spostalcode,
-            'billing_country'   => $request->bcountry,
-            'shipping_country'   => $request->scountry,
-            'descriptionorg'   => $request->descriptiondata,
-            );
+        $info = $this->validate($request,[
+                'organization_name' => 'required',
+                'website' => 'required',
+                'primary_phone' => 'required',
+                'ticker_symbol' => 'required',
+                'fax' => 'required',
+                'member_of' => 'required',
+                'secondary_phone' => 'required',
+                'employees' => 'required',
+                'primary_email' => 'required',
+                'secondary_email' => 'required',
+                'ownership' => 'required',
+                'industry' => 'required',
+                'rating' => 'required',
+                'type' => 'required',
+                'sic_code' => 'required',
+                'annual_revenue' => 'required',
+                'assigned_to' => 'required',
+                'billing_address' => 'required',
+                'shipping_address' => 'required',
+                'billing_pobox' => 'required',
+                'shipping_pobox' => 'required',
+                'billing_city' => 'required',
+                'shipping_city' => 'required',
+                'billing_state' => 'required',
+                'shipping_state' => 'required',
+                'billing_postalcode' => 'required',
+                'shipping_postalcode' => 'required',
+                'billing_country' => 'required',
+                'shipping_country' => 'required',
+                'descriptionorg' => 'required',
+        ]);
         $updateorganizations = DB::table('crm_organization')->where(array('id' => $request->hiddenid))->update($info);
        
         if($updateorganizations == 1)
@@ -3361,23 +3368,19 @@ class Controller extends BaseController
     }
     public function addcustomer(Request $request)
     {
-    
-        $info = array(
-            'name' => $request->fname.' '.$request->lname,
-            'email' => $request->email,
-            'mobile' => $request->pnumber,
-            'company' => $request->companyname,
-            'address' => $request->companyaddress,
-            'apartment' => $request->apartment,
-            'city' => $request->city,
-            'country' => $request->country,
-            'postalcode' => $request->pcode,
-            'notes' => $request->note, 
-            'tags' => $request->tag,
-            
-            
-            );
-            print_r($request->countriesdata);
+        $info = $this->validate($request,[
+                'name' => 'required',
+                'email' => 'required',
+                'mobile' => 'required',
+                'company' => 'required',
+                'address' => 'required',
+                'apartment' => 'required',
+                'city' => 'required',
+                'country' => 'required',
+                'postalcode' => 'required',
+                'notes' => 'required',
+                'tags' => 'required',
+        ]);
         $data = DB::table('tbl_customer')->insert($info);
             
         if($data == 1)
@@ -3817,12 +3820,11 @@ class Controller extends BaseController
     public function updateshippingzone(Request $request)
     {
         
-       $info = array(
-            'zone_name' => $request->zonename,
-            'zone_region' => $request->zoneregion,
-            'shipping_method' => $request->shippingmethod
-            
-            );
+       $info = $this->validate($request,[
+                'zone_name' => 'required',
+                'zone_region' => 'required',
+                'shipping_method' => 'required',
+        ]);
         $updateshippingzone = DB::table('shipping_zone')->where(array('id' => $request->hiddenid))->update($info);
         if($updateshippingzone == 1)
         {
@@ -3942,11 +3944,10 @@ class Controller extends BaseController
     }
      public function addwarehouse(Request $request)
     {
-         $info = array(
-            'name' => $request->warehousename,
-            'address' => $request->address,
-           
-            );
+         $info = $this->validate($request,[
+                'name' => 'required',
+                'address' => 'required',
+        ]);
         $data = DB::table('warehosue')->insert($info);
             
         if($data == 1)
@@ -3966,11 +3967,10 @@ class Controller extends BaseController
     }
     public function updatewarehouse(Request $request)
     {
-         $info = array(
-            'name' => $request->warehousename,
-            'address' => $request->address,
-           
-            );
+        $info = $this->validate($request,[
+                'name' => 'required',
+                'address' => 'required',
+        ]);
        $updatewarehouse = DB::table('warehosue')->where(array('id' => $request->hiddenid))->update($info);
         if($updatewarehouse == 1)
         {
@@ -5116,10 +5116,9 @@ class Controller extends BaseController
     }
     public function addleadstatus(Request $request)
     {
-        
-        $info = array(
-            'lead_status'   => $request->leadstatus,
-            );
+        $info = $this->validate($request,[
+                'lead_status' => 'required',
+        ]);
         $data = DB::table('crm_leadstatus')->insert($info);
        
         if($data == 1)
@@ -5139,10 +5138,9 @@ class Controller extends BaseController
     }
     public function updateleadstatus(Request $request)
     {
-        $info = array(
-            'lead_status'   => $request->leadstatus,
-            
-            );
+       $info = $this->validate($request,[
+                'lead_status' => 'required',
+        ]);
         $updateleadstatus = DB::table('crm_leadstatus')->where(array('id' => $request->hiddenid))->update($info);
         if($updateleadstatus == 1)
         {
@@ -5172,10 +5170,9 @@ class Controller extends BaseController
     }
     public function addleadsource(Request $request)
     {
-        
-        $info = array(
-            'lead_source'   => $request->leadsource,
-            );
+        $info = $this->validate($request,[
+                'lead_source' => 'required',
+        ]);
         $data = DB::table('crm_leadsource')->insert($info);
        
         if($data == 1)
@@ -5195,10 +5192,9 @@ class Controller extends BaseController
     }
     public function updateleadsource(Request $request)
     {
-        $info = array(
-            'lead_source'   => $request->leadsource,
-            
-            );
+        $info = $this->validate($request,[
+                'lead_source' => 'required',
+        ]);
         $updateleadsource = DB::table('crm_leadsource')->where(array('id' => $request->hiddenid))->update($info);
         if($updateleadsource == 1)
         {
@@ -5228,10 +5224,9 @@ class Controller extends BaseController
     }
     public function addindustry(Request $request)
     {
-        
-        $info = array(
-            'lead_industry'   => $request->industry,
-            );
+        $info = $this->validate($request,[
+                'lead_industry' => 'required',
+        ]);
         $data = DB::table('crm_leadindustry')->insert($info);
        
         if($data == 1)
@@ -5251,10 +5246,9 @@ class Controller extends BaseController
     }
     public function updateindustry(Request $request)
     {
-        $info = array(
-            'lead_industry'   => $request->industry,
-            
-            );
+        $info = $this->validate($request,[
+                'lead_industry' => 'required',
+        ]);
         $updateindustry = DB::table('crm_leadindustry')->where(array('id' => $request->hiddenid))->update($info);
         if($updateindustry == 1)
         {
@@ -5285,10 +5279,9 @@ class Controller extends BaseController
     }
     public function addgroupname(Request $request)
     {
-        
-        $info = array(
-            'group_name'   => $request->groupname,
-            );
+        $info = $this->validate($request,[
+                'group_name' => 'required',
+        ]);
         $data = DB::table('tbl_salesgroup')->insert($info);
        
         if($data == 1)
@@ -5308,9 +5301,9 @@ class Controller extends BaseController
     }
     public function updategroupname(Request $request)
     {
-        $info = array(
-            'group_name'   => $request->groupname,
-            );
+       $info = $this->validate($request,[
+                'group_name' => 'required',
+        ]);
         $updategroupname = DB::table('tbl_salesgroup')->where(array('id' => $request->hiddenid))->update($info);
         if($updategroupname == 1)
         {
@@ -5642,10 +5635,9 @@ class Controller extends BaseController
     }
     public function addunit(Request $request)
     {
-        
-        $info = array(
-            'unit_name'  => $request->unitname
-            );
+        $info = $this->validate($request,[
+                'unit_name' => 'required',
+        ]);
         $data = DB::table('tbl_unit')->insert($info);
        
         if($data == 1)
@@ -5665,9 +5657,9 @@ class Controller extends BaseController
     }
     public function updateunit(Request $request)
     {
-        $info = array(
-            'unit_name'  => $request->unitname
-            );
+        $info = $this->validate($request,[
+                'unit_name' => 'required',
+        ]);
         $updateunit = DB::table('tbl_unit')->where(array('id' => $request->hiddenid))->update($info);
         if($updateunit == 1)
         {

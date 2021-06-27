@@ -73,7 +73,8 @@
                       <input type="hidden" name="hiddenid" value="<?php echo $editgroupname->id;?>">
                      <div class="form-group">
                       <label for="exampleInputUsername1">Group Name</label>
-                    <input type="text" name="groupname" placeholder="Enter Group Name" class="form-control" value="<?php echo $editgroupname->group_name;?>" required>
+                    <input type="text" name="group_name" placeholder="Enter Group Name" class="form-control" value="<?php echo $editgroupname->group_name;?>" >
+                    <span style="color:red;">{{ $errors->first('group_name') }}</span>
                     </div>
                    
                     
@@ -114,7 +115,8 @@
                       {{ csrf_field() }}
                     <div class="form-group">
                       <label for="exampleInputUsername1">Group Name</label>
-                    <input type="text" name="groupname" placeholder="Enter Group Name" class="form-control" required>
+                    <input type="text" name="group_name" placeholder="Enter Group Name" class="form-control">
+                    <span style="color:red;">{{ $errors->first('group_name') }}</span>
                     </div>
                      
                    

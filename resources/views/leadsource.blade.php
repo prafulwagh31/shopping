@@ -73,7 +73,9 @@
                       <input type="hidden" name="hiddenid" value="<?php echo $editleadsource->id;?>"
                      <div class="form-group">
                       <label for="exampleInputUsername1">Lead Source</label>
-                    <input type="text" name="leadsource" placeholder="Enter Lead Source" class="form-control" value="<?php echo $editleadsource->lead_source;?>" required>
+                    <input type="text" name="lead_source" placeholder="Enter Lead Source" class="form-control" value="<?php echo $editleadsource->lead_source;?>">
+                    <span style="color:red;">{{ $errors->first('lead_source') }}</span>
+                    </div>
                     </div>
                    
                     
@@ -114,7 +116,8 @@
                       {{ csrf_field() }}
                     <div class="form-group">
                       <label for="exampleInputUsername1">Lead Source</label>
-                    <input type="text" name="leadsource" placeholder="Enter Lead Source" class="form-control" required>
+                    <input type="text" name="lead_source" placeholder="Enter Lead Source" class="form-control">
+                    <span style="color:red;">{{ $errors->first('lead_source') }}</span>
                     </div>
                      
                    
