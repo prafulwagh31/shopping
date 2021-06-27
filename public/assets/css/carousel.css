@@ -1,0 +1,704 @@
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Show 4th slide on md  if col-md-4*/
+    .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  /* Show 3rd slide on sm  if col-sm-6*/
+    .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -50%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+
+}
+@media (min-width: 576px) {
+	
+    .carousel-item {
+        margin-right: 0;
+    }
+
+    /* show 2 items */
+    .carousel-inner .active + .carousel-item {
+        display: block;
+    }
+    
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+        transition: none;
+    }
+
+    .carousel-inner .carousel-item-next {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+    
+    /* left or forward direction */
+    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+    .carousel-item-next.carousel-item-left + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    } 
+    
+    /* farthest right hidden item must be abso position for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    
+    /* right or prev direction */
+    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+    .carousel-item-prev.carousel-item-right + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    /* show 3rd of 3 item slide */
+  .carousel-inner .active + .carousel-item + .carousel-item {
+        display: block;
+    }
+ 
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+        transition: none;
+    }
+  
+    
+    .carousel-inner .carousel-item-next {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+    
+    
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    
+    /* right or prev direction */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+
+}
+
+
+@media (min-width: 991px) {
+
+    /* show 4th item */
+    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+        display: block;
+    }
+    
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    
+    /* Show 5th slide on lg if col-lg-3 */
+    .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -25%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    
+    /* right or prev direction //t - previous slide direction last item animation fix */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+
+}
+
+
+
+
+.carousel-arrow-left {
+position: relative;
+top:175%;
+  left: 95%;
+
+
+}
+.carousel-arrow-right {
+position: relative;
+top:175%;
+  left: 96%;
+
+}
+.img-carousel:hover {
+ opacity: 0.3; 
+}
+
+.img-carousel {
+    max-width: 100% !important;
+    height: auto;
+border: 2px solid black;
+border-radius: 20% !important;
+}
+
+.offer img {
+    width: 100%;
+
+}
+
+.image {
+    display: block;
+    width: 100%;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.offer {
+    margin: 20px 0 0 !important;
+width: 100%;
+overflow: hidden;
+    position: relative;
+border-radius: 50%;
+border: 5px solid #000000;
+}
+.overlay {
+    position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #dee2e6;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+.overlaytext {
+white-space: nowrap; 
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+
+.offer:hover .overlay{
+bottom: 0;
+  height: 100%;
+}
+
+.abtimg{
+width: 100%;
+height: auto;
+}
+
+.abtcolimg
+{
+position: relative;
+width : 40%;
+height : auto;
+
+}
+
+.abtcol
+{
+position: relative;
+width : 50%;
+height : auto;
+margin-left: 10%;
+margin-top: 10%;
+color:#110f5f;
+box-shadow: 10px 10px 5px grey;
+background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(102,178,255,1));
+}
+.Header__categoryDetailsValue:hover {
+background-color: #8d8d8d00;
+color: #000000;
+}
+.offerm-1{
+position: relative;
+width: 100%;
+margin-left: 75%;
+}
+
+.offerm-2{
+position: relative;
+width: 100%;
+
+}
+
+.offerm-3{
+position: relative;
+width: 100%;
+
+}
+
+
+.row-grid {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column-grid {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column-grid img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column-grid {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column-grid {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.container-grid {
+  text-align: center;
+  padding: 10px 20px;
+color: white;
+}
+
+.polaroid {
+  width: 80%;
+  background-color: black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+.card-carousel{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+.price {
+  color: grey;
+  font-size: 22px;
+}
+.card-carousel button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card-carousel button:hover {
+  opacity: 0.7;
+}
+
+
+.row-product-grid {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column-product-grid {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column-product-grid img{
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column-product-grid {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column-product-grid {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.column-about {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card-about {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container-about {
+  padding: 0 16px;
+}
+
+.container-about::after, .row-about::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title-about {
+  color: grey;
+}
+
+.button-about {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button-about:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column-about {
+    width: 100%;
+    display: block;
+  }
+}
+
+
+.header-blog {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(181 32 9 / 59%));
+}
+
+
+.leftcolumn-blog {   
+  float: left;
+  width: 75%;
+}
+
+
+.rightcolumn-blog {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+
+.img-blog {
+  background-color: #aaa;
+  width: 100%;
+  padding: 10px;
+}
+
+
+.card-blog {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+
+.row-blog:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+@media screen and (max-width: 800px) {
+  .leftcolumn-blog, .rightcolumn-blog {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+
+.fa {
+ 
+  font-size: 30px;
+  width: 40px;
+height:40px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  
+  color: white;
+}
+
+.fa-twitter {
+ 
+  color: white;
+}
+
+.fa-google {
+ 
+  color: white;
+}
+
+
+
+.fa-youtube {
+  
+  color: white;
+}
+
+.fa-instagram {
+  
+  color: white;
+}
+
+
+.input-contact {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.btn-contact {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-contact:hover {
+  background-color: #45a049;
+}
+
+.container-contact {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.column-contact {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  
+}
+
+/* Clear floats after the columns */
+.row-contact:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.dealersubmit{
+  background-color: #050b29;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.dealerselect {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+.dealertextarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+.dealerinput {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid red;
+background-color: #dee2e6;
+outline: none;
+}
+
+.dealer-contact-details li{
+text-align: right;
+    line-height: 45px;
+    font-weight: 700;
+    font-size: 14px;
+}
+.adrs_franchise {
+    width: 100%;
+    background-color: #fff;
+    min-height: 190px;
+    margin: 15px 0;
+    overflow: hidden;
+    padding: 25px;
+    border: 1px solid #ccc;
+   
+    box-shadow: 0px 0px 23px 0px rgb(0 0 0 / 21%);
+background-image: linear-gradient(dodgerblue, dodgerblue);
+  background-size: 0 5px, auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  transition: all .2s ease-out;
+}
+.adrs_franchise_ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.circle-inner-wrappper:hover{
+ border: 2px solid #ccc;
+}
+.adrs_franchise:hover{
+background-size: 100% 5px, auto;
+}
+
+
+.h3-productgrid{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
+
+.demo{padding:45px 0}
+.product-grid2{font-family:'Open Sans',sans-serif;position:relative}
+.product-grid2 .product-image2{overflow:hidden;position:relative}
+.product-grid2 .product-image2 a{display:block}
+.product-grid2 .product-image2 img{width:100%;height:auto}
+.product-image2 .pic-1{opacity:1;transition:all .5s}
+.product-grid2:hover .product-image2 .pic-1{opacity:0}
+.product-image2 .pic-2{width:100%;height:100%;opacity:0;position:absolute;top:0;left:0;transition:all .5s}
+.product-grid2:hover .product-image2 .pic-2{opacity:1}
+.product-grid2 .social-productgrid li{padding:0;margin:0;position:absolute;bottom:50px;right:25px;z-index:1}
+.product-grid2 .social-productgrid li li{margin:0 0 10px;display:block;transform:translateX(100px);transition:all .5s}
+.product-grid2:hover .social-productgrid li{transform:translateX(0)}
+.product-grid2:hover .social-productgrid li:nth-child(2){transition-delay:.15s}
+.product-grid2:hover .social-productgrid li:nth-child(3){transition-delay:.25s}
+.product-grid2 .social-productgrid li a{color:#505050;background-color:#fff;font-size:17px;line-height:45px;text-align:center;height:45px;width:45px;border-radius:50%;display:block;transition:all .3s ease 0s}
+.product-grid2 .social-productgrid li a:hover{color:#fff;background-color:#3498db;box-shadow:0 0 10px rgba(0,0,0,.5)}
+.product-grid2 .social-productgrid li a:after,.product-grid2 .social-productgrid li a:before{content:attr(data-tip);color:#fff;background-color:#000;font-size:12px;line-height:22px;border-radius:3px;padding:0 5px;white-space:nowrap;opacity:0;transform:translateX(-50%);position:absolute;left:50%;top:-30px}
+.product-grid2 .social-productgrid li a:after{content:'';height:15px;width:15px;border-radius:0;transform:translateX(-50%) rotate(45deg);top:-22px;z-index:-1}
+.product-grid2 .social-productgrid li a:hover:after,.product-grid2 .social-productgrid li a:hover:before{opacity:1}
+.product-grid2 .add-to-cart-productgrid{color:#fff;background-color:#404040;font-size:15px;text-align:center;width:100%;padding:10px 0;display:block;position:absolute;left:0;bottom:-100%;transition:all .3s}
+.product-grid2 .add-to-cart-productgrid:hover{background-color:#3498db;text-decoration:none}
+.product-grid2:hover .add-to-cart-productgrid{bottom:0}
+.product-grid2 .product-new-label{background-color:#3498db;color:#fff;font-size:17px;padding:5px 10px;position:absolute;right:0;top:0;transition:all .3s}
+.product-grid2:hover .product-new-label{opacity:0}
+.product-grid2 .product-content{padding:20px 10px;text-align:center}
+.product-grid2 .title-productgrid{font-size:17px;margin:0 0 7px}
+.product-grid2 .title-productgrid a{color:#303030}
+.product-grid2 .title-productgrid a:hover{color:#3498db}
+.product-grid2 .price-productgrid{color:#303030;font-size:15px}
+@media screen and (max-width:990px){.product-grid2{margin-bottom:30px}
+}
+

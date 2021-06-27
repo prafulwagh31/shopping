@@ -1,0 +1,1 @@
+<h1><a href="{{ route('install')}}">Install</a></h1>
