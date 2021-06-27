@@ -22,5 +22,9 @@ class SqlFileSeeder extends Seeder
         $file=database_path("countries.sql");
         $sql = file_get_contents($file);
         DB::unprepared($sql);
+
+        $file=database_path("currency.sql");
+        $sql = file_get_contents($file);
+        DB::unprepared($sql);
     }
 }

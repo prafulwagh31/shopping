@@ -101,19 +101,29 @@ $currency = DB::table('currency')->get();
                     <div class="form-group">
                       <input type="file" name="logo" >
                      </div>
-                      <img src="{{asset('productimg')}}<?php echo '/'.$data->logo;?>" style="height:100px;width:100px;">
+                       <?php if(isset($data->logo)){?>
+                     <img src="{{asset('productimg')}}<?php echo '/'.$data->logo;?>" style="width:100px;height:100px;">
+                     <?php }else{?>
+                    
+                     <?php }?>
+                     
                       <br><br>
                       <label for="exampleInputUsername1">Logo 2 Upload</label>
                       <div class="form-group">
                       <input type="file" name="logo2" >
                      </div>
-                      <img src="{{asset('productimg')}}<?php echo '/'.$data->logo2;?>" style="height:100px;width:100px;">
+                      <?php if(isset($data->logo)){?>
+                     <img src="{{asset('productimg')}}<?php echo '/'.$data->logo;?>" style="width:100px;height:100px;">
+                     <?php }else{?>
+                     
+                     <?php }?>
+                     
                       <br><br>
                       
                       <label for="exampleInputUsername1">Cash On Delivery</label>
                     <div class="form-group">
                        <label class="switch">
-                      <input type="checkbox"   name="cashondelivery" <?php if($data->cashondelivery == '1'){echo 'checked';}?>>
+                      <input type="checkbox"   name="cashondelivery" <?php if($data?->cashondelivery == '1'){echo 'checked';}?>>
                       <span class="slider round"></span>
                     </label>
                      </div>
@@ -124,7 +134,7 @@ $currency = DB::table('currency')->get();
                       <select class="form-control" name="currency">
                           <option>Select currency</option>
                           <?php foreach($currency as $currencydata){?>
-                          <option value="{{ $currencydata->id }}" <?php if($currencydata->status == 1){ echo 'selected';}?>>{{ $currencydata->currency }}</option>
+                          <option value="{{ $currencydata->id }}" <?php if($currencydata?->status == 1){ echo 'selected';}?>>{{ $currencydata->currency }}</option>
                           <?php }?>
                       </select>
                      
@@ -132,15 +142,15 @@ $currency = DB::table('currency')->get();
                      </div>
                       <div class="form-group">
                           <label for="exampleInputUsername1">Delivery Charges</label>
-                      <input type="text" name="deliverycharges"  class="form-control" value="{{$data->deliverycharges }}">
+                      <input type="text" name="deliverycharges"  class="form-control" value="{{$data?->deliverycharges }}">
                      </div>
                       <div class="form-group">
                           <label for="exampleInputUsername1">Proposal Prefix</label>
-                      <input type="text" name="proposalprefix"  class="form-control" value="{{$data->proposalprefix }}">
+                      <input type="text" name="proposalprefix"  class="form-control" value="{{$data?->proposalprefix }}">
                      </div>
                       <div class="form-group">
                           <label for="exampleInputUsername1">Invoice Prefix</label>
-                      <input type="text" name="invoiceprefix"  class="form-control" value="{{$data->invoiceprefix }}">
+                      <input type="text" name="invoiceprefix"  class="form-control" value="{{$data?->invoiceprefix }}">
                      </div>
                     <button type="submit" name="submit">Submit</button>
                     

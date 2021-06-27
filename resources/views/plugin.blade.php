@@ -99,7 +99,7 @@ input:checked + .slider:before {
                     <div class="form-group">
                       
                      <label class="switch">
-                      <input type="checkbox" name="pos" <?php if($data->pos == '1'){echo 'checked';}?>>
+                      <input type="checkbox" name="pos" <?php if($data?->pos == '1'){echo 'checked';}?>>
                       <span class="slider round"></span>
                     </label>
 
@@ -108,7 +108,7 @@ input:checked + .slider:before {
                     <div class="form-group">
                     
                      <label class="switch">
-                      <input type="checkbox"   name="crm" <?php if($data->crm == '1'){echo 'checked';}?>>
+                      <input type="checkbox"   name="crm" <?php if($data?->crm == '1'){echo 'checked';}?>>
                       <span class="slider round"></span>
                     </label>
 

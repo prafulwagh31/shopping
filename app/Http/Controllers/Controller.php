@@ -1814,7 +1814,7 @@ class Controller extends BaseController
         
         
             $info['pid'] = $pid;
-
+        dd($info);
             
         $data = DB::table('tbl_categories')->insert($info);
         if($pid != 0)
@@ -3458,7 +3458,15 @@ class Controller extends BaseController
         {
              $info = array( 'pos' => 0,'crm' => 0);
         }
-        $update = DB::table('tbl_plugin')->update($info);
+        $exists =  DB::table('tbl_plugin')->get();
+        if(!$exists->isEmpty())
+        {
+            $update = DB::table('tbl_plugin')->update($info);
+        }else
+        {
+            $update = DB::table('tbl_plugin')->insert($info);
+        }
+        
        return redirect('/plugin')->with('success_message', 'Plugin setting updated successfully');
     }
     public function setting()
@@ -3538,15 +3546,21 @@ class Controller extends BaseController
                 );
         }
         
+        $exists = DB::table('settings')->get();
         
-    
-        $updateproduct = DB::table('settings')->where(array('id'  => 1))->update($info);
-        $info2 = array(
-            'status'=> 1,
-            
-            
-        );
-        $updatecurrency = DB::table('currency')->where(array('id'  => $request->currency))->update($info2);
+        if(!$exists->isEmpty())
+        {dd($exists);
+            $updateproduct = DB::table('settings')->where(array('id'  => 1))->update($info);
+            $info2 = array('status'=> 1);
+            $updatecurrency = DB::table('currency')->where(array('id'  => $request->currency))->update($info2);
+        }else
+        {
+            $updateproduct = DB::table('settings')->where(array('id'  => 1))->insert($info);
+            $info2 = array('status'=> 1);
+            $updatecurrency = DB::table('currency')->where(array('id'  => $request->currency))->update($info2);
+        }
+        
+      
          return redirect('/setting')->with('success_message', 'Setting updated successfully');
         
     }
