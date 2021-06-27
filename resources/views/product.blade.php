@@ -481,12 +481,12 @@ body {font-family: "Lato", sans-serif;}
                                     <div class="row">
                                        <div class="col-md-6">
                                           <label for="exampleInputEmail1">SKU (Stock Keeping Unit)</label>
-                                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sku" value="<?php echo $editinventory->sku;?>">
+                                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="sku" value="<?php echo $editinventory?->sku;?>">
                                        </div>
                                        <br>
                                        <div class="col-md-6">
                                           <label for="exampleInputEmail1">Barcode (ISBN, UPC, GTIN, etc.)</label>
-                                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="barcode" value="<?php echo $editinventory->barcode;?>">
+                                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="barcode" value="<?php echo $editinventory?->barcode;?>">
                                        </div>
                                        <br>
                                        <?php if($editproductstock != ''){
@@ -509,7 +509,7 @@ body {font-family: "Lato", sans-serif;}
                                     <div class="row" id="stockdetails"  <?php if($editproductstock != ''){ ?> style="" <?php }else {?> style="display:none;"<?php }?>>
                                        <div class="col-md-6">
                                           <label for="exampleInputEmail1">Stock quantity</label>
-                                          <input type="number" class="form-control" id="exampleInputUsername1" placeholder="" name="stockquantity" value="<?php if(isset($editproductstock)){echo $editproductstock->stockqty;}?>">
+                                          <input type="number" class="form-control" id="exampleInputUsername1" placeholder="" name="stockquantity" value="<?php if(isset($editproductstock)){echo $editproductstock?->stockqty;}?>">
                                        </div>
                                        <br>
                                        <div class="col-md-6">
@@ -527,7 +527,7 @@ body {font-family: "Lato", sans-serif;}
                                        </div>
                                     </div>
                                     <br>
-                                    <?php if($editinventory->minqty != '' || $editinventory->maxqty){ ?>
+                                    <?php if($editinventory?->minqty != '' || $editinventory?->maxqty){ ?>
                                     <input type="checkbox" id="quantity" name="quantity" checked>
                                     <label for="quantity">Track Quantity</label>
                                     <?php } else {?>
@@ -538,14 +538,14 @@ body {font-family: "Lato", sans-serif;}
                                     <input type="checkbox" id="outofstock" name="quantity">
                                     <label for="quantity">Continue selling when out of stock</label>
                                  </div>
-                                 <div class="row" id="quantityinput" <?php if($editinventory->minqty != '' || $editinventory->maxqty){ ?> style="" <?php }else {?> style="display:none;"<?php }?>>
+                                 <div class="row" id="quantityinput" <?php if($editinventory?->minqty != '' || $editinventory?->maxqty){ ?> style="" <?php }else {?> style="display:none;"<?php }?>>
                                     <div class="col-md-6 form-group">
                                        <label for="exampleInputUsername1">Min Qunatity</label>
-                                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="minquantity"  value="<?php echo $editinventory->minqty;?>">
+                                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="minquantity"  value="<?php echo $editinventory?->minqty;?>">
                                     </div>
                                     <div class="col-md-6 form-group">
                                        <label for="exampleInputUsername1">Max Qunatity</label>
-                                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="maxquantity" value="<?php echo $editinventory->maxqty;?>">
+                                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="maxquantity" value="<?php echo $editinventory?->maxqty;?>">
                                     </div>
                                  </div>
                               </div>
@@ -560,14 +560,14 @@ body {font-family: "Lato", sans-serif;}
                                           <br>
                                           <div class="row">
                                              <div class="col-md-4">
-                                                <input name="weight" id="ShippingCardWeight" placeholder="0.0" class="form-control" aria-labelledby="ShippingCardWeightLabel" aria-invalid="false" aria-multiline="false" value="<?php echo $editshipping->weight;?>"> 
+                                                <input name="weight" id="ShippingCardWeight" placeholder="0.0" class="form-control" aria-labelledby="ShippingCardWeightLabel" aria-invalid="false" aria-multiline="false" value="<?php echo $editshipping?->weight;?>"> 
                                              </div>
                                              <div class="col-md-2">
                                                 <select id="ShippingCardWeightUnit" name="weightUnit" class="form-control" style="height: 48px;">
-                                                   <option value="POUNDS" <?php  if($editshipping->weight == "POUNDS"){echo "selected";}?>>lb</option>
-                                                   <option value="OUNCES" <?php  if($editshipping->weight == "OUNCES"){echo "selected";}?>>oz</option>
-                                                   <option value="KILOGRAMS" <?php  if($editshipping->weight == "KILOGRAMS"){echo "selected";}?>>kg</option>
-                                                   <option value="GRAMS" <?php  if($editshipping->weight == "GRAMS"){echo "selected";}?>>g</option>
+                                                   <option value="POUNDS" <?php  if($editshipping?->weight == "POUNDS"){echo "selected";}?>>lb</option>
+                                                   <option value="OUNCES" <?php  if($editshipping?->weight == "OUNCES"){echo "selected";}?>>oz</option>
+                                                   <option value="KILOGRAMS" <?php  if($editshipping?->weight == "KILOGRAMS"){echo "selected";}?>>kg</option>
+                                                   <option value="GRAMS" <?php  if($editshipping?->weight == "GRAMS"){echo "selected";}?>>g</option>
                                                 </select>
                                              </div>
                                           </div>
@@ -581,7 +581,7 @@ body {font-family: "Lato", sans-serif;}
                                              <select class="form-control" name="shippingclass">
                                                 <option>Shipping Class</option>
                                                 <?php foreach($shippingclass as $shippingclass){?>
-                                                <option value="{{$shippingclass->id}}" <?php if($shippingclass->id == $editproduct->shippingclass ){echo 'selected';}?>>{{$shippingclass->title}}</option>
+                                                <option value="{{$shippingclass->id}}" <?php if($shippingclass->id == $editproduct?->shippingclass ){echo 'selected';}?>>{{$shippingclass->title}}</option>
                                                 <?php }?>
                                              </select>
                                           </div>
@@ -592,13 +592,13 @@ body {font-family: "Lato", sans-serif;}
                                              <label>Dimension</label>
                                           </div>
                                           <div class="col-md-3">
-                                             <input type="text" class="form-control" name="length" placeholder="Length" value="<?php echo $editshipping->length;?>">
+                                             <input type="text" class="form-control" name="length" placeholder="Length" value="<?php echo $editshipping?->length;?>">
                                           </div>
                                           <div class="col-md-3">
-                                             <input type="text" class="form-control" name="width" placeholder="Width" value="<?php echo $editshipping->width;?>">
+                                             <input type="text" class="form-control" name="width" placeholder="Width" value="<?php echo $editshipping?->width;?>">
                                           </div>
                                           <div class="col-md-3">
-                                             <input type="text" class="form-control" name="height" placeholder="Height" value="<?php echo $editshipping->height;?>">
+                                             <input type="text" class="form-control" name="height" placeholder="Height" value="<?php echo $editshipping?->height;?>">
                                           </div>
                                        </div>
                                        <br>
@@ -610,7 +610,7 @@ body {font-family: "Lato", sans-serif;}
                                                 <?php
                                                    foreach($country as $country)
                                                    { ?>
-                                                <option value="<?php echo $country->countrycode; ?>" <?php  if($editshipping->country == $country->countrycode){echo "selected";}?>><?php echo $country->countryname; ?></option>
+                                                <option value="<?php echo $country->countrycode; ?>" <?php  if($editshipping?->country == $country->countrycode){echo "selected";}?>><?php echo $country->countryname; ?></option>
                                                 <?php }
                                                    ?>
                                              </select>
@@ -624,14 +624,14 @@ body {font-family: "Lato", sans-serif;}
                                  <div class="row">
                                     <div class="col-md-6">
                                        <lable>Upsell</lable>
-                                       <input type="text" name="upsell" class="form-control" value="<?php echo $editproduct->up_sell?>">
+                                       <input type="text" name="upsell" class="form-control" value="<?php echo $editproduct?->up_sell?>">
                                     </div>
                                  </div>
                                  <br>
                                  <div class="row">
                                     <div class="col-md-6">
                                        <lable>Cross-sell</lable>
-                                       <input type="text" name="crosssell" class="form-control" value="<?php echo $editproduct->cross_sell?>">
+                                       <input type="text" name="crosssell" class="form-control" value="<?php echo $editproduct?->cross_sell?>">
                                     </div>
                                  </div>
                               </div>
@@ -647,7 +647,7 @@ body {font-family: "Lato", sans-serif;}
                               <div class="form-group">
                               <label for="exampleInputUsername1">Product Gallery</label>
                               <input type="file" name="productgallery[]" class="form-control" multiple="multiple">
-                              <?php $medianewdata = explode(',',$editproduct->product_gallery);
+                              <?php $medianewdata = explode(',',$editproduct?->product_gallery);
                                  ?>
                               <?php foreach($medianewdata as $medianewdata){?>
                               <img src="{{asset('productimg')}}<?php echo '/'.$medianewdata;?>" style="height:100px;width:100px;">
@@ -684,8 +684,8 @@ body {font-family: "Lato", sans-serif;}
                               <label for="exampleInputUsername1">Tax status</label>
                               <select class="form-control" name="taxstatus">
                               <option>Select Tax Status</option>
-                              <option value="Taxable" <?php if($editproduct->taxstatus == "Taxable"){echo 'selected';}?>>Taxable</option>
-                              <option value="NotTaxable" <?php if($editproduct->taxstatus == "NotTaxable"){echo 'selected';}?>>Not Taxable</option>
+                              <option value="Taxable" <?php if($editproduct?->taxstatus == "Taxable"){echo 'selected';}?>>Taxable</option>
+                              <option value="NotTaxable" <?php if($editproduct?->taxstatus == "NotTaxable"){echo 'selected';}?>>Not Taxable</option>
                               </select>
                               </div>
                               <br>
@@ -694,7 +694,7 @@ body {font-family: "Lato", sans-serif;}
                               <select class="form-control" name="tax">
                               <option value="0">Select Tax</option>
                               <?php foreach($tax as $taxdata) {?>
-                              <option value="{{$taxdata->id}}" <?php if($editproduct->tax == $taxdata->id){echo 'selected';}?>>{{$taxdata->tax_name}}</option>
+                              <option value="{{$taxdata->id}}" <?php if($editproduct?->tax == $taxdata->id){echo 'selected';}?>>{{$taxdata->tax_name}}</option>
                               <?php }?>
                               </select>
                               </div>
@@ -709,19 +709,19 @@ body {font-family: "Lato", sans-serif;}
                               <div class="form-group">
                               <h6><strong>SEO</strong></h6><br>
                               <label for="exampleInputUsername1">SEO Page Title</label>
-                              <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="title" value="<?php echo $editproduct->seo_title;?>">
+                              <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="title" value="<?php echo $editproduct?->seo_title;?>">
                               </div>
                               <div class="form-group">
                               <label for="exampleInputEmail1">SEO Description</label>
-                              <textarea class="form-control" id="seodescription" rows="4" name="seodescription" ><?php echo $editproduct->seo_description;?></textarea>
+                              <textarea class="form-control" id="seodescription" rows="4" name="seodescription" ><?php echo $editproduct?->seo_description;?></textarea>
                               </div>
                               <div class="form-group">
                               <label for="exampleInputEmail1">SEO Key</label>
-                              <input type="text" class="form-control" id="seokey" placeholder="" name="seokey" value="<?php echo $editproduct->seo_key;?>">
+                              <input type="text" class="form-control" id="seokey" placeholder="" name="seokey" value="<?php echo $editproduct?->seo_key;?>">
                               </div>
                               <div class="form-group">
                               <label for="exampleInputEmail1">SEO URL and Handle</label>
-                              <input type="text" class="form-control" id="urlhandle" placeholder="" name="urlhande" value="<?php echo $editproduct->seo_url;?>">
+                              <input type="text" class="form-control" id="urlhandle" placeholder="" name="urlhande" value="<?php echo $editproduct?->seo_url;?>">
                               </div>
                               <button type="submit" class="btn btn-gradient-primary mr-2">Next</button>
                         </form>

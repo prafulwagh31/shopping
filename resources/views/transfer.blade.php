@@ -110,7 +110,7 @@
                               
                            <?php
                           
-                           $i = 1;foreach($stock as $stock){
+                           $i = 1;foreach($stock as  $stock){
                                 $productdata = DB::table('tbl_product')->where(array('id' => $stock->productid))->first();
                                 $media = '';
                                 $inventory  = DB::table('tbl_inventory')->where(array('product_id' => $stock->productid))->first();
@@ -156,7 +156,7 @@
                                 @else
                                  <input type="hidden" class="form-control" name="proposalid"value="0">
                                   <input type="hidden" class="form-control" name="product_type"value="simple">
-                                <select name="productid[]" class="form-control" name="selectproductdata[]" onchange="getprice(this);">
+                                <select name="productid[]" class="form-control" name="selectproductdata[]" onchange="getprice(this,{{$i}});">
                                     <option>Select Product</option>
                                     @foreach($products as $product)
                                     <option value="{{$product->id}}">{{$product->product_name}}</option>
@@ -313,7 +313,7 @@
         }
         var finalhtml = ' <tr id="compositremovediv"><td><input type="checkbox" name="addcheckdata[]"></td>'+
                            
-                            '<td style="width:250px;" ><select name="productid[]" class="form-control" name="selectproductdata[]" onchange="getprice(this)">'+
+                            '<td style="width:250px;" ><select name="productid[]" class="form-control" name="selectproductdata[]" onchange="getprice(this,'+j+')">'+
                                html+
                                
                             '</select>'+
@@ -415,7 +415,7 @@
            
            $('#transporttotal').val(servicetotal);
         var purchaseprice =   parseFloat(servicetotal) / parseFloat(quantity);
-        alert(purchaseprice);
+       
         var count = $('#count').val();
         for(i = 0; i <= count; i++)
         {
@@ -655,9 +655,10 @@ $("#checkAll").click(function(){
 document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
-}function getprice(the)
+}function getprice(the,countadta)
 {
-        var count = $('#count').val();
+        var count = countadta;
+        alert(count);
         var productid = $(the).val();
         var itemtotal = $('#itemtotal').val();
        

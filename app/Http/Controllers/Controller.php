@@ -1074,7 +1074,7 @@ class Controller extends BaseController
     {
         $countries = DB::table('country')->get();
       $customer = DB::table('tbl_customer')->get();
-      $leaddata = DB::table('crm_leads')->get();
+     
       return view('lead',['country' => $countries,'customer' => $customer,'leaddata' => $leaddata]);
     }
     public function addlead(Request $request)
@@ -1142,7 +1142,7 @@ class Controller extends BaseController
             $proposalid = $request->proposalid;
         }
         
-        $stock = DB::table('stock')->get();
+        $stock = DB::table('stock_detail')->get();
         $suppliers = DB::table('suppliers')->get();
         $tax = DB::table('tbl_tax')->get();
         $products = DB::table('tbl_product')->get();
@@ -4456,8 +4456,12 @@ class Controller extends BaseController
         {
             
             $product = DB::table('tbl_product')->where(array('id' => $request->productid))->first();
-        
-            $tax = DB::table('tbl_tax')->where(array('id' => $product->tax))->first();
+            $tax = '';
+            if($product->tax != '')
+            {
+                $tax = DB::table('tbl_tax')->where(array('id' => $product->tax))->first();
+            }
+            
              $taxfinaldata = DB::table('tbl_tax')->get();
             if($tax == '')
             {
@@ -4792,7 +4796,7 @@ class Controller extends BaseController
         $industry = DB::table('crm_leadindustry')->get();
         $leadstatus = DB::table('crm_leadstatus')->get();
       $customer = DB::table('tbl_customer')->get();
-      $leaddata = DB::table('crm_leads')->get();
+      $leaddata = DB::table('tbl_addnewlead')->get();
       $salesuser = DB::table('tbl_salesgroup')->get();
       $access_users = DB::table('access_users')->get();
        $crm_campaign = DB::table('crm_campaign')->get();
