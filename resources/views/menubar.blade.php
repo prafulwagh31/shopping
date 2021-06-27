@@ -735,13 +735,24 @@
                               </div>
                            </a>
                         </div>
-                        <div class="menu-text-wrap">
+                       
+                         <div class="menu-text-wrap">
                            <a href="{{ url('salesgroup')}}" modulename="Documents" class="menu-link">
                               <div title="Documents" class="content-text">
                                  <div class="moduleIcon">
                                     <i class="fa fa-object-group"></i>
                                  </div>
                                  <div class="text-truncate">Sales Groups</div>
+                              </div>
+                           </a>
+                        </div>
+                         <div class="menu-text-wrap">
+                           <a href="{{ url('salesuser')}}" modulename="Documents" class="menu-link">
+                              <div title="Documents" class="content-text">
+                                 <div class="moduleIcon">
+                                    <i class="fa fa-object-group"></i>
+                                 </div>
+                                 <div class="text-truncate">Sales User</div>
                               </div>
                            </a>
                         </div>
@@ -849,6 +860,16 @@
                                     <i class="fa fa-object-group"></i>
                                  </div>
                                  <div class="text-truncate">Sales Groups</div>
+                              </div>
+                           </a>
+                        </div>
+                        <div class="menu-text-wrap">
+                           <a href="{{ url('salesuser')}}" modulename="Documents" class="menu-link">
+                              <div title="Documents" class="content-text">
+                                 <div class="moduleIcon">
+                                    <i class="fa fa-object-group"></i>
+                                 </div>
+                                 <div class="text-truncate">Sales User</div>
                               </div>
                            </a>
                         </div>
