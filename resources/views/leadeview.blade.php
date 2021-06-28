@@ -17,6 +17,8 @@
 </style>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css" />
  <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">
@@ -267,11 +269,11 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label >Event Start Date</label>
-                                        <input type="date" name="eventstart"  class="form-control">
+                                        <input type="text" name="eventstart" id="datepicker" class="form-control">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Event End Date</label>
-                                        <input type="date" name="eventend"  class="form-control">
+                                        <input type="text" name="eventend"  id="datepickerend" class="form-control">
                                     </div>
                                 </div>
                                 
@@ -416,7 +418,15 @@
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
+ <script>
+    jQuery(function($) {
+        $("#datepicker").datetimepicker();
+         $("#datepickerend").datetimepicker();
+    });
+  </script>
 @include('footer')
 <script>
     CKEDITOR.replace( 'notes' );

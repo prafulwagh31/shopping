@@ -123,7 +123,7 @@ $currency = DB::table('currency')->get();
                       <label for="exampleInputUsername1">Cash On Delivery</label>
                     <div class="form-group">
                        <label class="switch">
-                      <input type="checkbox"   name="cashondelivery" <?php if($data?->cashondelivery == '1'){echo 'checked';}?>>
+                      <input type="checkbox"   name="cashondelivery" @isset($data->cashondelivery)<?php if($data->cashondelivery == '1'){echo 'checked';}?> @endisset>
                       <span class="slider round"></span>
                     </label>
                      </div>
@@ -134,7 +134,7 @@ $currency = DB::table('currency')->get();
                       <select class="form-control" name="currency">
                           <option>Select currency</option>
                           <?php foreach($currency as $currencydata){?>
-                          <option value="{{ $currencydata->id }}" <?php if($currencydata?->status == 1){ echo 'selected';}?>>{{ $currencydata->currency }}</option>
+                          <option value="{{ $currencydata->id }}" @isset($currencydata->status) <?php if($currencydata->status == 1){ echo 'selected';}?> @endisset>{{ $currencydata->currency }}</option>
                           <?php }?>
                       </select>
                      
@@ -142,15 +142,15 @@ $currency = DB::table('currency')->get();
                      </div>
                       <div class="form-group">
                           <label for="exampleInputUsername1">Delivery Charges</label>
-                      <input type="text" name="deliverycharges"  class="form-control" value="{{$data?->deliverycharges }}">
+                      <input type="text" name="deliverycharges"  class="form-control" value="@isset($data->deliverycharges) {{$data->deliverycharges }} @endisset">
                      </div>
                       <div class="form-group">
                           <label for="exampleInputUsername1">Proposal Prefix</label>
-                      <input type="text" name="proposalprefix"  class="form-control" value="{{$data?->proposalprefix }}">
+                      <input type="text" name="proposalprefix"  class="form-control" value="@isset($data->proposalprefix) {{$data->proposalprefix }} @endisset">
                      </div>
                       <div class="form-group">
                           <label for="exampleInputUsername1">Invoice Prefix</label>
-                      <input type="text" name="invoiceprefix"  class="form-control" value="{{$data?->invoiceprefix }}">
+                      <input type="text" name="invoiceprefix"  class="form-control" value=" @isset($data->invoiceprefix) {{$data->invoiceprefix }} @endisset">
                      </div>
                     <button type="submit" name="submit">Submit</button>
                     

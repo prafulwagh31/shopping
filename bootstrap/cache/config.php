@@ -382,8 +382,8 @@
       0 => 'User',
       1 => 'Admin',
     ),
-    'finalurl' => 'GEHOBEN',
-    'fronturl' => 'https://gccsolution.com/GEHOBEN/',
+    'finalurl' => 'admin',
+    'fronturl' => 'http://localhost:8000/admin/',
   ),
   'hashing' => 
   array (
@@ -746,6 +746,29 @@
     ),
     'compiled' => 'E:\\xampp\\htdocs\\shopping\\storage\\framework\\views',
   ),
+  'dompdf' => 
+  array (
+    'show_warnings' => false,
+    'orientation' => 'portrait',
+    'defines' => 
+    array (
+      'font_dir' => 'E:\\xampp\\htdocs\\shopping\\storage\\fonts/',
+      'font_cache' => 'E:\\xampp\\htdocs\\shopping\\storage\\fonts/',
+      'temp_dir' => 'C:\\Users\\WIN10~1\\AppData\\Local\\Temp',
+      'chroot' => 'E:\\xampp\\htdocs\\shopping',
+      'enable_font_subsetting' => false,
+      'pdf_backend' => 'CPDF',
+      'default_media_type' => 'screen',
+      'default_paper_size' => 'a4',
+      'default_font' => 'serif',
+      'dpi' => 96,
+      'enable_php' => false,
+      'enable_javascript' => true,
+      'enable_remote' => true,
+      'font_height_ratio' => 1.1,
+      'enable_html5_parser' => false,
+    ),
+  ),
   'flare' => 
   array (
     'key' => NULL,
@@ -758,18 +781,8 @@
       'report_query_bindings' => true,
       'report_view_data' => true,
       'grouping_type' => NULL,
-      'report_logs' => true,
-      'maximum_number_of_collected_logs' => 200,
-      'censor_request_body_fields' => 
-      array (
-        0 => 'password',
-      ),
     ),
     'send_logs_as_events' => true,
-    'censor_request_body_fields' => 
-    array (
-      0 => 'password',
-    ),
   ),
   'ignition' => 
   array (
@@ -899,7 +912,7 @@
   'trustedproxy' => 
   array (
     'proxies' => NULL,
-    'headers' => 94,
+    'headers' => 30,
   ),
   'tinker' => 
   array (

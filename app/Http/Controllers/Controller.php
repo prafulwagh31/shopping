@@ -14,6 +14,7 @@ use session;
 use Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class Controller extends BaseController
 {
@@ -314,7 +315,54 @@ class Controller extends BaseController
             $product = DB::table('tbl_product')->get();
             $category = DB::table('tbl_categories')->get();
             $brand = DB::table('tbl_brand')->get();
-            return view('dashboard',['product' => $product, 'category' => $category,'brand' => $brand]);
+            
+            $month  = [1,2,3,4,5,6,7,8,9,10,11,12];
+            $leads = [];
+            $proposalcount = [];
+            $invoicecount = [];
+            foreach($month as $m)
+            {
+                $leadcount = DB::table('tbl_addnewlead')->whereMonth('created_at',$m)->get();
+                $proposals = DB::table('lead_proposal')->whereMonth('proposal_date',$m)->get();
+                $invoice = DB::table('tbl_crminvoice')->whereMonth('invoicedate',$m)->get();
+                
+                array_push($leads,count($leadcount));
+                array_push($proposalcount,count($proposals));
+                array_push($invoicecount,count($invoice));
+            }
+            $leadcountdata = DB::table('tbl_addnewlead')->get();
+            $proposalsdata = DB::table('lead_proposal')->get();
+            $invoicedata = DB::table('tbl_crminvoice')->get();
+            $crm = [count($leadcountdata),count($proposalsdata),count($invoicedata)];
+            $ordertoday = DB::table('orderdata')->whereDate('orderdate', date('Y-m-d'))->get();
+            $monthdata = DB::table('orderdata')->whereMonth('orderdate', Carbon::now()->month)
+            ->get();
+            $weeklydata = DB::table('orderdata')->whereBetween('orderdate', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+            $orderdata = [count($ordertoday),count($monthdata),count($weeklydata)];
+            $eventtoday = DB::table('tbl_events')->whereDate('event_start', date('Y-m-d'))->get();
+            $eventsall = DB::table('tbl_events')->get();
+            $eventallarray = [];
+            foreach($eventsall as $eventsalldata)
+            {
+                $info = ['id' => $eventsalldata->id,'title' => $eventsalldata->event_title,'start' =>$eventsalldata->event_start,'end' => $eventsalldata->event_end];
+                array_push($eventallarray,$info);
+            }
+
+
+            $campagian = [];
+            $leadscampen = [];
+           
+            foreach($month as $m)
+            {
+                $campagiandata =  DB::table('crm_campaign')->whereMonth('created_at',  $m)->get();
+                $leadscampendata =  DB::table('tbl_addnewlead')->whereMonth('created_at', $m)->get();
+               
+                array_push($campagian,count($campagiandata));
+                array_push($leadscampen,count($leadscampendata));
+               
+            }
+           
+            return view('dashboard',['product' => $product, 'category' => $category,'brand' => $brand,'leads' => $leads,'proposalcount' => $proposalcount,'invoicecount' => $invoicecount,'crm' => $crm,'orderdata' => $orderdata,'eventtoday' => $eventtoday,'eventallarray' => $eventallarray,'campagian' => $campagian,'leadscampen' => $leadscampen]);
         }
         else
         {
@@ -1180,7 +1228,7 @@ class Controller extends BaseController
                     'paurchase_price'   => $purchaseprice[$key],
                     'supplierid' => $request->suppliername,
                     'expected_arrival' => $request->expectedarrival,
-                    
+                    'status'          => 'active',
                     'referencenumber' => $request->refernecenumber,
                     'tag'           =>$request->tags,
                     'product_type' =>$request->product_type,
@@ -1189,29 +1237,33 @@ class Controller extends BaseController
             $insert = DB::table('transfer')->insert($info);
         }
 
-        $service = $request->service;
-        $serviceprice = $request->serviceprice;
-        foreach($service as $keyservice => $serviceval)
-        {
-            $info = array(
-                    'transfer_id' => $transferid,
-                    'name' => $serviceval,
-                    'price'  => $serviceprice[$keyservice],
-                );
-            $insert = DB::table('purchase_transport_details')->insert($info);
-        }
-        
-            $info = array(
-                    'transfer_id' => $transferid,
-                    'itemtotal' => $request->itemtotal,
-                    'itemtax'  => $request->itemtax,
-                    'itemfinaltotal'     =>$request->itemfinaltotal,
-                    'transporttotal'       => $request->transporttotal,
-                    'overalldiscount'   => $request->overalldiscount,
-                    'grand_total'   => $request->grand_total,
-               );
-            $insert = DB::table('purchase_details')->insert($info);
-       
+            $service = $request->service;
+            $serviceprice = $request->serviceprice;
+                if(!empty($service))
+                {
+
+                
+                foreach($service as $keyservice => $serviceval)
+                {
+                    $info = array(
+                            'transfer_id' => $transferid,
+                            'name' => $serviceval,
+                            'price'  => $serviceprice[$keyservice],
+                        );
+                    $insert = DB::table('purchase_transport_details')->insert($info);
+                }
+                
+                    $info = array(
+                            'transfer_id' => $transferid,
+                            'itemtotal' => $request->itemtotal,
+                            'itemtax'  => $request->itemtax,
+                            'itemfinaltotal'     =>$request->itemfinaltotal,
+                            'transporttotal'       => $request->transporttotal,
+                            'overalldiscount'   => $request->overalldiscount,
+                            'grand_total'   => $request->grand_total,
+                       );
+                    $insert = DB::table('purchase_details')->insert($info);
+                }
         if($insert == 1)
         {
              return redirect('transferlist')->with('success_message', 'Transfer Created Successfully');
@@ -1303,10 +1355,17 @@ class Controller extends BaseController
     }
     public function invoicegenrate(Request $request)
     {
-        $transfer = DB::table('transfer')->where(array('id' => $request->id))->where('accept','!=',0)->first();
+        $transfer = DB::table('transfer')->where(array('id' => $request->id))->first();
         $transferdata = DB::table('transfer')->where(array('transferid' => $transfer->transferid))->where('accept','!=',0)->get();
         $vendor = DB::table('tbl_vendor')->where(array('id' => $transfer->supplierid))->first();
         return view('transferinvoice',['transfer' => $transfer,'vendor' => $vendor,'transferdata' => $transferdata]);
+    }
+    public function downloadOrderListPDF()
+    {
+        $orderlist = DB::table('orderdata')->select('orderdata.*','user.*')->join('user','user.id','=','orderdata.userid')->get();
+        $pdf = PDF::loadView('orderlistpdf', compact('orderlist'));
+        
+        return $pdf->download('orderlist.pdf');
     }
     public function submitrecieve(Request $request)
     {
@@ -1329,8 +1388,27 @@ class Controller extends BaseController
                 if($allquntity[$key] != '')
                 {
                     $stcok=DB::table('stock')->where(array('productid' => $transferdetails->productid))->first();
-                    $total = $stcok->stockqty + $allquntity[$key];
-                    $stcokupdate =DB::table('stock')->where(array('productid' => $transferdetails->productid))->update(array('stockqty' =>$total));
+                    if(!is_null($stcok->stockqty))
+                    {
+                         $total = $stcok->stockqty + $allquntity[$key];
+                     }else
+                     {
+                         $total = $allquntity[$key];
+                     }
+                   
+                    $existstock = DB::table('stock')->where(array('productid' => $transferdetails->productid))->get();
+                    if(!$existstock->isEmpty())
+                    {
+                        $info = ['productid' => $transferdetails->productid ,'stockqty' => $total,'allowbarcodes' => 'no', 'stockthreshold' => 0];
+                        
+                        $stcokupdate =DB::table('stock')->where(array('productid' => $transferdetails->productid))->update($info);
+                    }else
+                    {
+                        $info = ['productid' => $transferdetails->productid ,'stockqty' => $total,'allowbarcodes' => 'no', 'stockthreshold' => 0];
+                       
+                        $stcokupdate =DB::table('stock')->insert($info);
+                    }
+                    
                 }
                 
                 
@@ -4417,9 +4495,25 @@ class Controller extends BaseController
     public function addleadproposal(Request $request)
     {
         $proposallast = DB::table('lead_proposal')->orderBy('id', 'desc')->first();
-        $proid = $proposallast->id + 1;
+        if(!is_null($proposallast))
+        {
+            $proid = $proposallast->id + 1;
+        }else
+        {
+            $proid = 1;
+        }
+        
         $setting = DB::table('settings')->first();
-        $ref = $setting->proposalprefix.$proid;
+
+         if(!is_null($setting))
+        {
+             $ref = $setting->proposalprefix.$proid;
+        }else
+        {
+             $ref = 'PO'.$proid;
+        }
+
+       
         $info = array(
                         'proposal_ref_id' => $ref,
                         'customer_id' => $request->customerid,
@@ -5614,13 +5708,51 @@ class Controller extends BaseController
             $product = DB::table('tbl_product')->get();
             $category = DB::table('tbl_categories')->get();
             $brand = DB::table('tbl_brand')->get();
-            return view('crmdashboard',['product' => $product, 'category' => $category,'brand' => $brand]);
+            $month  = [1,2,3,4,5,6,7,8,9,10,11,12];
+            $campagian = [];
+            $leads = [];
+           
+            foreach($month as $m)
+            {
+                $campagiandata =  DB::table('crm_campaign')->whereMonth('created_at',  $m)->get();
+                $leadsdata =  DB::table('tbl_addnewlead')->whereMonth('created_at', $m)->get();
+               
+                array_push($campagian,count($campagiandata));
+                array_push($leads,count($leadsdata));
+               
+            }
+           
+           
+            return view('crmdashboard',['product' => $product, 'category' => $category,'brand' => $brand,'campagian' => $campagian,'leads' => $leads]);
         }
         else
         {
             return view('login');
         }
         
+    }
+    public function orderlist()
+    {
+        if(session('user_id') != '')
+        {
+            $orderlist = DB::table('orderdata')->select('orderdata.*','user.*')->join('user','user.id','=','orderdata.userid')->get();
+            return view('orderlist',['orderlist' => $orderlist]);
+        }else
+        {
+            return view('login');
+        }
+    }
+     public function eventlist()
+    {
+        if(session('user_id') != '')
+        {
+             $eventlist = DB::table('tbl_events')->join('tbl_addnewlead','tbl_events.lead_id','tbl_addnewlead.id')->select('tbl_events.*','tbl_addnewlead.*')->get();
+            
+            return view('eventlist',['eventlist' => $eventlist]);
+        }else
+        {
+            return view('login');
+        }
     }
     public function proposallistdata()
     {

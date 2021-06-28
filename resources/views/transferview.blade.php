@@ -103,10 +103,10 @@
                          </td>
                         <td style="width:50px;">{{ $product->product_name }}
                         <br><br> {{ $inventory->sku }}</td>
-                        <td><input type="text" name="qty[]" id="qty{{$i}}" class="form-control" value="<?php if($transerproduct->status != 'received') {?>{{ $transerproduct->quantity }}<?php } else{?>{{ $transerproduct->accept }}<?php }?>" style="width:70px;"></td>
-                        <td><input type="text" name="price[]" id="price{{$i}}" class="form-control" value="<?php if($transerproduct->status != 'received') {?>{{ $transerproduct->price }}<?php } else{?>{{ $transerproduct->accept }}<?php }?>" style="width:100px;"></td>
-                        <td><input type="text" name="tax[]" id="tax{{$i}}" class="form-control" value="<?php if($transerproduct->status != 'received') {?>{{ $tax->tax_name }}<?php } else{?>{{ $transerproduct->accept }}<?php }?>" style="width:100px;"></td>
-                        <td><input type="text" name="taxtype[]" id="taxtype{{$i}}" class="form-control" value="<?php if($transerproduct->status != 'received') {?>{{ $taxtype }}<?php } else{?>{{ $transerproduct->accept }}<?php }?>" style="width:100px;"></td>
+                        <td><input type="text" name="qty[]" id="qty{{$i}}" class="form-control" value="<?php if($transerproduct->status != 'received') {?>{{ $transerproduct->quantity }}<?php } else{?>{{ $transerproduct->accept }}<?php }?>" style="width:70px;" disabled></td>
+                        <td><input type="text" name="price[]" id="price{{$i}}" class="form-control" value="<?php if($transerproduct->status != 'received') {?>{{ $transerproduct->price }}<?php } else{?>{{ $transerproduct->accept }}<?php }?>" style="width:100px;" disabled></td>
+                        <td><input type="text" name="tax[]" id="tax{{$i}}" class="form-control" value="<?php if($transerproduct->status != 'received') {?>{{ $tax->tax_name }}<?php } else{?>{{ $transerproduct->accept }}<?php }?>" style="width:100px;" disabled></td>
+                        <td><input type="text" name="taxtype[]" id="taxtype{{$i}}" class="form-control" value="<?php if($transerproduct->status != 'received') {?>{{ $taxtype }}<?php } else{?>{{ $transerproduct->accept }}<?php }?>" style="width:100px;" disabled></td>
                        
                        
                         

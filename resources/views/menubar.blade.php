@@ -43,8 +43,8 @@
             </span>
             <span title="Organizations" class="fav-text">Vendor</span>
             </a>
-
-            @if($plugin?->pos == 1)
+            @isset($plugin->pos)
+            @if($plugin->pos == 1)
             <a href="https://thadathilfarmresort.com/posplugindata/" class="fav-links">
             <span class="icon-wrap">
             <i class="fa fa-star"></i>
@@ -52,13 +52,15 @@
             <span title="Organizations" class="fav-text">POS</span>
             </a>
             @endif
+            @endisset
             <a href="{{ url('customer')}}" class="fav-links">
             <span class="icon-wrap">
             <i class="fa fa-star"></i>
             </span>
             <span title="Actions" class="fav-text">Customers</span>
             </a>
-            @if($plugin?->crm == 1)
+             @isset($plugin->crm)
+            @if($plugin->crm == 1)
             <a href="{{ url('crmdashboard')}}" class="fav-links">
             <span class="icon-wrap">
             <i class="fa fa-star"></i>
@@ -66,6 +68,7 @@
             <span title="Actions" class="fav-text">CRM Dashboard</span>
             </a>
             @endif
+            @endisset
             <a href="{{ url('plugin')}}" class="fav-links">
             <span class="icon-wrap">
             <i class="fa fa-star"></i>
@@ -141,7 +144,8 @@
                      </a>
                   </div>
                </li>
-               @if($plugin?->crm == 1)
+               @isset($plugin->pos)
+               @if($plugin->crm == 1)
                <li id="app_PROJECTS" title="Projects" class="sidebar-link">
                   <div class="sidebar-text inactiveApp">
                      <a   onclick="gettabactive('crm')">
@@ -151,6 +155,7 @@
                   </div>
                </li>
                @endif
+               @endisset
                <li id="app_INVENTORY" title="Inventory" class="sidebar-link">
                   <div class="sidebar-text inactiveApp">
                      <a   onclick="gettabactive('access_module')">
@@ -168,7 +173,8 @@
                   
                   foreach($access_permission as $access_permissionval){
                   ?>
-               @if($access_permissionval?->module_id == 2)
+               @isset($access_permissionval)
+               @if($access_permissionval->module_id == 2)
                <li id="app_ESSENTIALS" title="Essentials" class="sidebar-link">
                   <div class="sidebar-text activeApp">
                      <a  onclick="gettabactive('product')">
@@ -178,7 +184,7 @@
                   </div>
                </li>
                @endif
-               @if($access_permissionval?->module_id == 3)
+               @if($access_permissionval->module_id == 3)
                <li id="app_MARKETING" title="Marketing" class="sidebar-link">
                   <div class="sidebar-text inactiveApp">
                      <a  onclick="gettabactive('service')">
@@ -188,7 +194,7 @@
                   </div>
                </li>
                @endif
-               @if($access_permissionval?->module_id == 4)
+               @if($access_permissionval->module_id == 4)
                <li id="app_SALES" title="Sales" class="sidebar-link">
                   <div class="sidebar-text inactiveApp">
                      <a   onclick="gettabactive('inventory')">
@@ -198,7 +204,7 @@
                   </div>
                </li>
                @endif
-               @if($access_permissionval?->module_id == 5)
+               @if($access_permissionval->module_id == 5)
                <li id="app_SUPPORT" title="Help desk" class="sidebar-link">
                   <div class="sidebar-text inactiveApp">
                      <a   onclick="gettabactive('websitesetting')">
@@ -208,7 +214,7 @@
                   </div>
                </li>
                @endif
-               @if($access_permissionval?->module_id == 10)
+               @if($access_permissionval->module_id == 10)
                @if($plugin->crm == 1)
                <li id="app_PROJECTS" title="Projects" class="sidebar-link">
                   <div class="sidebar-text inactiveApp">
@@ -220,7 +226,7 @@
                </li>
                @endif
                @endif
-               @if($access_permissionval?->module_id == 15)
+               @if($access_permissionval->module_id == 15)
                <li id="app_INVENTORY" title="Inventory" class="sidebar-link">
                   <div class="sidebar-text inactiveApp">
                      <a   onclick="gettabactive('access_module')">
@@ -230,6 +236,7 @@
                   </div>
                </li>
                @endif
+               @endisset
                <?php } 
                   }?>
             </ul>
@@ -267,6 +274,16 @@
                                     <i class="fa fa-anchor"></i>
                                  </div>
                                  <div class="text-truncate">Attributes</div>
+                              </div>
+                           </a>
+                        </div>
+                        <div class="menu-text-wrap">
+                           <a href="{{ url('orderlist')}}" class="menu-link">
+                              <div title="Find Duplicates" class="content-text">
+                                 <div class="moduleIcon">
+                                    <i class="fa fa-anchor"></i>
+                                 </div>
+                                 <div class="text-truncate">OrderList</div>
                               </div>
                            </a>
                         </div>

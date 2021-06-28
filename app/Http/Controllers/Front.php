@@ -36,7 +36,7 @@ class Front extends BaseController
                   
         $url = config('global.fronturl')."api/register";
         
-  
+     
         curl_setopt($handle, CURLOPT_URL, $url);
         curl_setopt($handle,CURLOPT_POST, true);
         curl_setopt($handle,CURLOPT_POSTFIELDS, $fields_string);
@@ -45,7 +45,7 @@ class Front extends BaseController
    
         $output = curl_exec($handle);
      
-   
+      
         curl_close($handle);
 
         $result =  json_decode($output);

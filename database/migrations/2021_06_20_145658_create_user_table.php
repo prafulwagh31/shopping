@@ -26,6 +26,8 @@ class CreateUserTable extends Migration
             $table->string('otp')->nullable();
             $table->string('shipping_address')->nullable();
             $table->string('billing_address')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->timestamps();
         });
     }

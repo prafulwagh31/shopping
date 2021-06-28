@@ -656,9 +656,12 @@
                             <td>{{ $proposallistval->discount }}</td>
                             <td>{{ $proposallistval->total }}</td>
                             
-                             <td> <a class="btn btn-default" href="{{url('/transfer/'.$customproductval->id.'/'.$proposal->id)}}">Create Purchase Order</a>
-                             <a href="{{url('/itemedit/'.$proposallistval->id)}}"><i class="fa fa-edit"></i></a>
-                          <a href="{{url('/proposalitemdelete/'.$proposallistval->id)}}"><i class="fa fa-trash"></i></a>
+                             <td> 
+                              @if(isset($customproductval->id))
+                              <a class="btn btn-default" href="{{url('/transfer/'.$customproductval->id.'/'.$proposal->id)}}">Create Purchase Order</a>
+                              @endif
+                              <a href="{{url('/itemedit/'.$proposallistval->id)}}"><i class="fa fa-edit"></i></a>
+                              <a href="{{url('/proposalitemdelete/'.$proposallistval->id)}}"><i class="fa fa-trash"></i></a>
                           </td>
                         </tr>
                         <?php

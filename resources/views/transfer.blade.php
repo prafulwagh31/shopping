@@ -81,7 +81,7 @@
            
                 <form class="" method="POST" action="{{ url('/addtransfer')}}"  enctype="multipart/form-data">
                       {{ csrf_field() }}
-                      
+                  <input type="hidden" name="count" id="count" value="0">     
                 <div class="row">
                     <div class="col-md-10 col-sm-10">
                         <div class=" grid-margin stretch-card">
@@ -139,7 +139,7 @@
                              
                                
                             ?>
-                            <input type="hidden" name="count" id="count" value="0">
+                           
                            
                             <tr>
                             <td><input type='checkbox' id='del_<?php if(isset($product->id)) { echo $product->id;}?>' name="addcheckdata[]"></td>
@@ -295,8 +295,10 @@
 <script>
     function addproducts()
     {
+
       var count = $('#count').val();
       var increment = parseInt(count) + 1;
+      alert(increment);
         var arrayFromPHP = <?php echo json_encode($products); ?>;
        
         var html = '<option value="0">Select Product</option>';
@@ -313,7 +315,7 @@
         }
         var finalhtml = ' <tr id="compositremovediv"><td><input type="checkbox" name="addcheckdata[]"></td>'+
                            
-                            '<td style="width:250px;" ><select name="productid[]" class="form-control" name="selectproductdata[]" onchange="getprice(this,'+j+')">'+
+                            '<td style="width:250px;" ><select name="productid[]" class="form-control" name="selectproductdata[]" onchange="getprice(this,'+increment+')">'+
                                html+
                                
                             '</select>'+
@@ -402,11 +404,18 @@
            var itemtotalfinal = parseFloat(total) * parseFloat(taxtotal)/100;
            var finalitemprice = parseFloat(itemtotalfinal) + parseFloat(total);
            $('#itemfinaltotal').val(finalitemprice);
+           var transporttotal = $('#transporttotal').val();
+        var overalldiscount = $('#overalldiscount').val();
+     
+        
+        var subtotal = parseFloat(finalitemprice)  + parseFloat(transporttotal) - parseFloat(overalldiscount)/100;
+        
+        $('#grand_total').val(subtotal);
     }
     function getserviceprice()
     {
-        var quantity = $('#quantity').val();
-         var servicetotal = 0;
+          var quantity = $('#quantity').val();
+          var servicetotal = 0;
            
             $('input[name^="serviceprice"]').each(function() {
                var serviceprice = $(this).val();
@@ -414,28 +423,41 @@
             });
            
            $('#transporttotal').val(servicetotal);
+            var taxtotal = 0;
+           
+            $('input[name^="taxpercentage"]').each(function() {
+               var taxpercentage = $(this).val();
+               taxtotal += parseInt(taxpercentage);
+            });
+           $('#itemtax').val(taxtotal);
         var purchaseprice =   parseFloat(servicetotal) / parseFloat(quantity);
        
         var count = $('#count').val();
+        var productprice = 0;
         for(i = 0; i <= count; i++)
         {
-             $('#purchaseprice'+i+'').val(purchaseprice);
+            var price = $('#price'+i+'').val();
+           
+            $('#purchaseprice'+i+'').val(parseFloat(purchaseprice) + parseFloat(price));
         }
-        var price0 = $('#price0').val();
-        if(price0 != '')
-        {
-            var itemfinaltotal = price0;
-            $('#itemtotal').val(itemfinaltotal);
-            $('#itemtax').val(0);
-            $('#itemfinaltotal').val(itemfinaltotal);
-        }else
-        {
-            var itemfinaltotal = $('#itemfinaltotal').val();
-        }
-        
+
+         $('input[name^="price"]').each(function() {
+           
+               productprice += parseInt( $(this).val());
+            });
+         var itemtotalfinal = parseFloat(productprice) * parseFloat(taxtotal)/100;
+
+          $('#itemtotal').val(parseFloat(productprice));
+          $('#itemfinaltotal').val(parseFloat(itemtotalfinal) + parseFloat(productprice));
+
+      
+       
         var transporttotal = $('#transporttotal').val();
         var overalldiscount = $('#overalldiscount').val();
-        var subtotal = parseFloat(itemfinaltotal) + parseFloat(transporttotal) - parseFloat(overalldiscount)/100;
+
+       
+        var subtotal = parseFloat(itemtotalfinal) + parseFloat(productprice) + parseFloat(transporttotal) - parseFloat(overalldiscount)/100;
+         alert(subtotal);
         $('#grand_total').val(subtotal);
        
     }
@@ -655,7 +677,8 @@ $("#checkAll").click(function(){
 document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
-}function getprice(the,countadta)
+}
+function getprice(the,countadta)
 {
         var count = countadta;
         alert(count);
@@ -674,7 +697,16 @@ document.addEventListener("click", function (e) {
             data:{productid: productid,producttype:producttype},
             success: function(result){
                 var obj = JSON.parse(result);
-            $('#price'+count+'').val(obj.saleprice);
+               
+                if(obj.saleprice != null)
+                {
+                  $('#price'+count+'').val(obj.saleprice);
+                }else 
+                {
+                  $('#price'+count+'').val(0);
+                }
+            
+            $('#purchaseprice'+count+'').val(0);
             var itemtot = 0;
             if(itemtotal == '')
             {
@@ -689,6 +721,7 @@ document.addEventListener("click", function (e) {
             $('#taxtype'+count+'').html(obj.taxtype);
             $('#taxpercentage'+count+'').val(obj.tax);
             $('#tax'+count+'').html(obj.taxfinaltype);
+            $('#transporttotal').val(0);
             
              var taxtotal = 0;
            
@@ -702,6 +735,8 @@ document.addEventListener("click", function (e) {
             var itemtotalfinal = parseFloat(itemtot) * parseFloat(taxtotal)/100;
            var finalitemprice = parseFloat(itemtotalfinal) + parseFloat(itemtot);
            $('#itemfinaltotal').val(finalitemprice);
+           $('#grand_total').val(finalitemprice);
+           
             
         }
             

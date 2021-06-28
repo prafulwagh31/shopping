@@ -74,33 +74,33 @@
                                             <div class="col-xs-12" style="padding-left: 20px">
                                             <div class="invoice-title">
                                                 <h2>Transfer</h2><br>
-                                                <h3 style="" id="saleid"><?php echo $transfer->transferid;?></h3>
+                                                <h3 style="" id="saleid"><?php echo $transfer?->transferid;?></h3>
                                             </div>
                                             <hr>
                                             
                                             
                                                 <div class="col-xs-12">
                                                     <address>
-                                                    <strong><?php echo $vendor->name;?></strong>
+                                                    <strong><?php echo $vendor?->name;?></strong>
                                                     <span id="username" style="padding:10px;"></span>
                                                     </address>
                                                 </div>
                                                 
                                                 <div class="col-xs-12 ">
                                                     <address>
-                                                        <strong><?php echo $transfer->expected_arrival;?></strong>
+                                                        <strong><?php echo $transfer?->expected_arrival;?></strong>
                                                         <span id="orderdate" style="padding:10px;"></span><br>
                                                     </address>
                                                 </div>
                                                 <div class="col-xs-12 ">
                                                     <address>
-                                                        <strong><?php echo $transfer->referencenumber;?></strong>
+                                                        <strong><?php echo $transfer?->referencenumber;?></strong>
                                                         <span id="refnumber" style="padding:10px;"></span><br>
                                                     </address>
                                                 </div>
                                                 <div class="col-xs-12 ">
                                                     <address>
-                                                        <strong><?php echo $transfer->tag;?></strong>
+                                                        <strong><?php echo $transfer?->tag;?></strong>
                                                         <span id="tag" style="padding:10px;"></span><br>
                                                     </address>
                                                 </div>
@@ -127,7 +127,8 @@
                                                                         <td class="text-center"><strong>Sub Total</strong></td>
                                                                         <td class="text-center"><strong>Tax</strong></td>
                                                                         <td class="text-center"><strong>Tax Type</strong></td>
-                                                                         <td class="text-center"><strong>Total</strong></td>
+                                                                        <td class="text-center"><strong>Total</strong></td>
+                                                                        <td class="text-center"><strong>Purchase Price</strong></td>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="finaldata">
@@ -148,11 +149,12 @@
                                                                         <td class="thick-line text-center"><strong>{{ $transferdata->quantity }}</strong></td>
                                                                         <td class="thick-line text-center" id="subtotal"> {{ $transferdata->quantity * $transferdata->price }}</td>
                                                                         <td class="thick-line text-center" id="tax">{{ $tax->tax_name }}</td>
-                                                                        <td class="thick-line text-center" id="subtotal"><?php if($transferdata->taxtype == 1){echo 'Inclusive';}else{ echo 'Exclusive';} ?></td>
-                                                                        <td class="thick-line text-center" id="subtotal"><?php if($transferdata->taxtype == 1){echo $transferdata->quantity * $transferdata->price;}else{
+                                                                        <td class="thick-line text-center" id="subtotal"><?php if($transferdata->taxtype == 'including'){echo 'Inclusive';}else{ echo 'Exclusive';} ?></td>
+                                                                        <td class="thick-line text-center" id="subtotal"><?php if($transferdata->taxtype == 'including'){echo $transferdata->quantity * $transferdata->price;}else{
                                                                         $total =$transferdata->quantity * $transferdata->price;
                                                                         $taxcalulate = $total*($tax->total_tax)/100;
                                         echo $taxcalulate+ $total;} ?></td>
+                                                                         <td class="thick-line text-center">{{ $transferdata?->paurchase_price}}</td>
                                                                     </tr>
                                                                    
                                                                 <?php 

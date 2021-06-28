@@ -122,6 +122,25 @@
                 </div>
               </div>
             </div>
+            <div class="col-md-7 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body" style="height: 500px;margin-bottom: 20px;">
+                  <div class="clearfix">
+                    <h4 class="card-title float-left">Monthly Campagian Vs Leads Count</h4>
+                    <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>                                     
+                  </div>
+                  <canvas id="my-chart"  height="300" width="500"></canvas>
+                </div>
+              </div>
+            </div>
+             <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Bar chart</h4>
+                  <canvas id="barChart" style="height:230px"></canvas>
+                </div>
+              </div>
+            </div>
             
         </div>
         
@@ -196,6 +215,37 @@
         
         }
 </script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0-rc.1/Chart.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+        $(function() {
+                var ctx = document.getElementById("my-chart").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'],
+                        datasets: [{
+                            label: 'Leads', // Name the series
+                            data: <?php echo json_encode($leads);?>, // Specify the data values array
+                            fill: false,
+                            borderColor: '#b744cc', // Add custom color border (Line)
+                            backgroundColor: '#b744cc', // Add custom color background (Points and Fill)
+                            borderWidth: 1 // Specify bar border width
+                        },{
+                            label: 'Campagian', // Name the series
+                            data: <?php echo json_encode($campagian);?>, // Specify the data values array
+                            fill: false,
+                            borderColor: '#2196f3', // Add custom color border (Line)
+                            backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
+                            borderWidth: 1 // Specify bar border width
+                        }]},
+                    options: {
+                      responsive: true, // Instruct chart js to respond nicely.
+                      maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
+                    }
+                });
+        });
+        </script>
 
 
   <!-- End custom js for this page-->

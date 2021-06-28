@@ -21,7 +21,8 @@ Route::post('admin-signup','Controller@adminregisterdata')->name('adminregisterd
 Route::get('admin', 'Controller@index')->name('login');
 Route::post('/login', 'Controller@login');
 
-
+Route::get('orderlist','Controller@orderlist')->name('orderlist');
+Route::get('eventlist','Controller@eventlist')->name('eventlist');
 
 // Route::group(['middleware' => ['auth']], function () {
 	Route::get('dashboard', 'Controller@dashboard')->name('dashboard');
@@ -160,7 +161,7 @@ Route::get('supplier','Controller@supplier')->name('supplier');
 Route::get('supplierdelete/{id}','Controller@supplierdelete')->name('supplierdelete');
 
 Route::get('deleteevent/{id}','Controller@deleteevent')->name('deleteevent');
-
+Route::get('/downloadOrderListPDF','Controller@downloadOrderListPDF');
 Route::get('leadstatus','Controller@leadstatus');
 Route::post('/addleadstatus','Controller@addleadstatus');
 Route::get('/leadstatusedit/{id}','Controller@editleadstatus');
