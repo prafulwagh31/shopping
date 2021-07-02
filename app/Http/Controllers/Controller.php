@@ -312,54 +312,111 @@ class Controller extends BaseController
     {
         if(session('user_id') != '')
         {
-            $product = DB::table('tbl_product')->get();
-            $category = DB::table('tbl_categories')->get();
-            $brand = DB::table('tbl_brand')->get();
-            
-            $month  = [1,2,3,4,5,6,7,8,9,10,11,12];
-            $leads = [];
-            $proposalcount = [];
-            $invoicecount = [];
-            foreach($month as $m)
+            if(session('user_type') == 'admin')
             {
-                $leadcount = DB::table('tbl_addnewlead')->whereMonth('created_at',$m)->get();
-                $proposals = DB::table('lead_proposal')->whereMonth('proposal_date',$m)->get();
-                $invoice = DB::table('tbl_crminvoice')->whereMonth('invoicedate',$m)->get();
-                
-                array_push($leads,count($leadcount));
-                array_push($proposalcount,count($proposals));
-                array_push($invoicecount,count($invoice));
-            }
-            $leadcountdata = DB::table('tbl_addnewlead')->get();
-            $proposalsdata = DB::table('lead_proposal')->get();
-            $invoicedata = DB::table('tbl_crminvoice')->get();
-            $crm = [count($leadcountdata),count($proposalsdata),count($invoicedata)];
-            $ordertoday = DB::table('orderdata')->whereDate('orderdate', date('Y-m-d'))->get();
-            $monthdata = DB::table('orderdata')->whereMonth('orderdate', Carbon::now()->month)
-            ->get();
-            $weeklydata = DB::table('orderdata')->whereBetween('orderdate', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
-            $orderdata = [count($ordertoday),count($monthdata),count($weeklydata)];
-            $eventtoday = DB::table('tbl_events')->whereDate('event_start', date('Y-m-d'))->get();
-            $eventsall = DB::table('tbl_events')->get();
-            $eventallarray = [];
-            foreach($eventsall as $eventsalldata)
-            {
-                $info = ['id' => $eventsalldata->id,'title' => $eventsalldata->event_title,'start' =>$eventsalldata->event_start,'end' => $eventsalldata->event_end];
-                array_push($eventallarray,$info);
-            }
+                    $product = DB::table('tbl_product')->get();
+                    $category = DB::table('tbl_categories')->get();
+                    $brand = DB::table('tbl_brand')->get();
+                    
+                    $month  = [1,2,3,4,5,6,7,8,9,10,11,12];
+                    $leads = [];
+                    $proposalcount = [];
+                    $invoicecount = [];
+                    foreach($month as $m)
+                    {
+                        $leadcount = DB::table('tbl_addnewlead')->whereMonth('created_at',$m)->get();
+                        $proposals = DB::table('lead_proposal')->whereMonth('proposal_date',$m)->get();
+                        $invoice = DB::table('tbl_crminvoice')->whereMonth('invoicedate',$m)->get();
+                        
+                        array_push($leads,count($leadcount));
+                        array_push($proposalcount,count($proposals));
+                        array_push($invoicecount,count($invoice));
+                    }
+                    $leadcountdata = DB::table('tbl_addnewlead')->get();
+                    $proposalsdata = DB::table('lead_proposal')->get();
+                    $invoicedata = DB::table('tbl_crminvoice')->get();
+                    $crm = [count($leadcountdata),count($proposalsdata),count($invoicedata)];
+                    $ordertoday = DB::table('orderdata')->whereDate('orderdate', date('Y-m-d'))->get();
+                    $monthdata = DB::table('orderdata')->whereMonth('orderdate', Carbon::now()->month)
+                    ->get();
+                    $weeklydata = DB::table('orderdata')->whereBetween('orderdate', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+                    $orderdata = [count($ordertoday),count($monthdata),count($weeklydata)];
+                    $eventtoday = DB::table('tbl_events')->whereDate('event_start', date('Y-m-d'))->get();
+                    $eventsall = DB::table('tbl_events')->get();
+                    $eventallarray = [];
+                    foreach($eventsall as $eventsalldata)
+                    {
+                        $info = ['id' => $eventsalldata->id,'title' => $eventsalldata->event_title,'start' =>$eventsalldata->event_start,'end' => $eventsalldata->event_end];
+                        array_push($eventallarray,$info);
+                    }
 
 
-            $campagian = [];
-            $leadscampen = [];
-           
-            foreach($month as $m)
+                    $campagian = [];
+                    $leadscampen = [];
+                   
+                    foreach($month as $m)
+                    {
+                        $campagiandata =  DB::table('crm_campaign')->whereMonth('created_at',  $m)->get();
+                        $leadscampendata =  DB::table('tbl_addnewlead')->whereMonth('created_at', $m)->get();
+                       
+                        array_push($campagian,count($campagiandata));
+                        array_push($leadscampen,count($leadscampendata));
+                       
+                    }
+            }else
             {
-                $campagiandata =  DB::table('crm_campaign')->whereMonth('created_at',  $m)->get();
-                $leadscampendata =  DB::table('tbl_addnewlead')->whereMonth('created_at', $m)->get();
-               
-                array_push($campagian,count($campagiandata));
-                array_push($leadscampen,count($leadscampendata));
-               
+                    $product = DB::table('tbl_product')->get();
+                    $category = DB::table('tbl_categories')->get();
+                    $brand = DB::table('tbl_brand')->get();
+                    
+                    $month  = [1,2,3,4,5,6,7,8,9,10,11,12];
+                    $leads = [];
+                    $proposalcount = [];
+                    $invoicecount = [];
+                    foreach($month as $m)
+                    {
+                       
+                        $leadcount = DB::table('tbl_addnewlead')->whereMonth('created_at',$m)->where('salesuser',session('user_id'))->get();
+                       
+                        $proposals = DB::table('lead_proposal')->whereMonth('proposal_date',$m)->get();
+                        $invoice = DB::table('tbl_crminvoice')->whereMonth('invoicedate',$m)->get();
+                        
+                        array_push($leads,count($leadcount));
+                        array_push($proposalcount,count($proposals));
+                        array_push($invoicecount,count($invoice));
+                    }
+
+                    $leadcountdata = DB::table('tbl_addnewlead')->where('salesuser',session('user_id'))->get();
+                    $proposalsdata = DB::table('lead_proposal')->get();
+                    $invoicedata = DB::table('tbl_crminvoice')->get();
+                    $crm = [count($leadcountdata),count($proposalsdata),count($invoicedata)];
+                    $ordertoday = DB::table('orderdata')->whereDate('orderdate', date('Y-m-d'))->get();
+                    $monthdata = DB::table('orderdata')->whereMonth('orderdate', Carbon::now()->month)
+                    ->get();
+                    $weeklydata = DB::table('orderdata')->whereBetween('orderdate', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+                    $orderdata = [count($ordertoday),count($monthdata),count($weeklydata)];
+                    $eventtoday = DB::table('tbl_events')->whereDate('event_start', date('Y-m-d'))->get();
+                    $eventsall = DB::table('tbl_events')->get();
+                    $eventallarray = [];
+                    foreach($eventsall as $eventsalldata)
+                    {
+                        $info = ['id' => $eventsalldata->id,'title' => $eventsalldata->event_title,'start' =>$eventsalldata->event_start,'end' => $eventsalldata->event_end];
+                        array_push($eventallarray,$info);
+                    }
+
+
+                    $campagian = [];
+                    $leadscampen = [];
+                   
+                    foreach($month as $m)
+                    {
+                        $campagiandata =  DB::table('crm_campaign')->whereMonth('created_at',  $m)->where('sales_user',session('user_id'))->get();
+                        $leadscampendata =  DB::table('tbl_addnewlead')->whereMonth('created_at', $m)->where('salesuser',session('user_id'))->get();
+                       
+                        array_push($campagian,count($campagiandata));
+                        array_push($leadscampen,count($leadscampendata));
+                       
+                    }
             }
            
             return view('dashboard',['product' => $product, 'category' => $category,'brand' => $brand,'leads' => $leads,'proposalcount' => $proposalcount,'invoicecount' => $invoicecount,'crm' => $crm,'orderdata' => $orderdata,'eventtoday' => $eventtoday,'eventallarray' => $eventallarray,'campagian' => $campagian,'leadscampen' => $leadscampen]);
@@ -1367,6 +1424,37 @@ class Controller extends BaseController
         
         return $pdf->download('orderlist.pdf');
     }
+    public function downloadLeadListPDF()
+    {
+
+        if(session('user_type') == 'admin')
+        {
+            $addleads = DB::table('tbl_addnewlead')->orderby('id','DESC')->get();
+        }else
+        {
+            $addleads = DB::table('tbl_addnewlead')->where(['created_by' => session('user_id'),'created_by_type' => session('user_type')])->orderby('id','DESC')->get();
+        }
+      
+        $pdf = PDF::loadView('listleadpdf', compact('addleads'));
+        
+        return $pdf->download('leadlist.pdf');
+    }
+    public function downloadCampagianListPDF()
+    {
+        $campaignsdata = DB::table('crm_campaign')->orderBy('id', 'desc')->get();
+        $pdf = PDF::loadView('campaignlistpdf', compact('campaignsdata'));
+        
+        return $pdf->download('campagianlist.pdf');
+         
+    }
+    public function downloadEventListPDF()
+    {
+        $eventlist = DB::table('tbl_events')->join('tbl_addnewlead','tbl_events.lead_id','tbl_addnewlead.id')->select('tbl_events.*','tbl_addnewlead.*')->get();
+         $pdf = PDF::loadView('eventlistpdf', compact('eventlist'));
+        
+        return $pdf->download('eventlistpdf.pdf');
+         
+    }
     public function submitrecieve(Request $request)
     {
        
@@ -1474,7 +1562,7 @@ class Controller extends BaseController
             {
             
 
-            $credentials = $request->only('email', 'password');
+            // $credentials = $request->only('email', 'password');
             
             // if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 // Authentication passed...
@@ -1899,7 +1987,7 @@ class Controller extends BaseController
         
         
             $info['pid'] = $pid;
-        dd($info);
+       
             
         $data = DB::table('tbl_categories')->insert($info);
         if($pid != 0)

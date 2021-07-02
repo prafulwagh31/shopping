@@ -162,6 +162,11 @@ Route::get('supplierdelete/{id}','Controller@supplierdelete')->name('supplierdel
 
 Route::get('deleteevent/{id}','Controller@deleteevent')->name('deleteevent');
 Route::get('/downloadOrderListPDF','Controller@downloadOrderListPDF');
+Route::get('download-lead-list','Controller@downloadLeadListPDF')->name('leadlistDownload');
+Route::get('download-campagian-list','Controller@downloadCampagianListPDF')->name('campagianlist');
+Route::get('download-event-list','Controller@downloadEventListPDF')->name('eventListDownload');
+
+
 Route::get('leadstatus','Controller@leadstatus');
 Route::post('/addleadstatus','Controller@addleadstatus');
 Route::get('/leadstatusedit/{id}','Controller@editleadstatus');

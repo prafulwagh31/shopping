@@ -475,6 +475,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                <div class="card">
               <div class="card-body">
+                 <a href="{{route('campagianlist')}}" class="btn btn-primary " style="margin-left: 20px;" target="_blank" style="">Export PDF</a>
                 <h4 class="card-title">Data table</h4>
                 <div class="row">
                   <div class="col-12">

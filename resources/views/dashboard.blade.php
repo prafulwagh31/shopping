@@ -100,8 +100,8 @@
                     <div class="card-body" style="height: 500px;margin-bottom: 20px;">
                       <div class="clearfix">
                         <h4 class="card-title float-left">Monthly Campagian Vs Leads Count</h4>
-                        <a href="{{ url('orderlist')}}" style="float:right;">Campagian List </a><br>
-                        <a href="{{ url('campaigns')}}" style="float:right;">Lead List</a>
+                        <a href="{{ url('campaigns')}}" style="float:right;">Campagian List </a><br>
+                        <a href="{{ url('listleads')}}" style="float:right;">Lead List</a>
                         <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>                                     
                       </div>
                       <canvas id="my-chart-list"  height="300" width="500"></canvas>

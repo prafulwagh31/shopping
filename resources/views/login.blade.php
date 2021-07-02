@@ -13,8 +13,8 @@
       <!-- endinject -->
       <link rel="shortcut icon" href="{{asset('web/images/favicon.png')}}" />
       <link rel='canonical' href='basic_elements.html' />
-      <script data-ezscrex="false" data-cfasync="false" type="text/javascript">window.google_analytics_uacct = "UA-169123501-22";</script>
-      <script data-ezscrex="false" data-cfasync="false" type="text/javascript">
+      <!-- <script data-ezscrex="false" data-cfasync="false" type="text/javascript">window.google_analytics_uacct = "UA-169123501-22";</script> -->
+    <!--   <script data-ezscrex="false" data-cfasync="false" type="text/javascript">
          var _gaq = _gaq || [];
          _gaq.push(['e._setAccount', 'UA-169123501-22']);
          _gaq.push(['f._setAccount', 'UA-38339005-1']);
@@ -49,7 +49,8 @@
          }
          var ezoFormfactor = '1';
          var ezo_elements_to_check = Array();
-      </script><!-- START EZHEAD -->
+      </script> -->
+      <!-- START EZHEAD -->
       <script data-ezscrex="false" type='text/javascript'>
          var soc_app_id = '0';
          var did = 198340;

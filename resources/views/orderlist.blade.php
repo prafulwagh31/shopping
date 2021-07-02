@@ -40,13 +40,14 @@
             </div>
           
           <div class="row">
-           
+           <a href="{{action('Controller@downloadOrderListPDF')}}" class="btn btn-primary " style="margin-left: 20px;" target="_blank" style="">Export PDF</a>
             <div class="col-md-12 grid-margin stretch-card">
                <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Order List</h4>
-                <a href="{{action('Controller@downloadOrderListPDF')}}">Download PDF</a>
-                <input type='button' value='Delete' id='delete'><br><br>
+               
+                
+               
                 <div class="row">
                   <div class="col-12">
                     <table id="order-listing" class="table">

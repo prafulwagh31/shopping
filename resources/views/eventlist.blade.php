@@ -37,6 +37,7 @@
                <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Event List</h4>
+                <a href="{{ route('eventListDownload') }}" class="btn btn-primary " target="_blank" style="">Export PDF</a>
                <br><br>
                 <div class="row">
                   <div class="col-12">

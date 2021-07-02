@@ -1,48 +1,49 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <style type="text/css">
-     
-  </style>
-  <body>
-    <table class="table table-bordered" >
-    
-     
-     
-      <tbody>
-         <tr>
-        <td>#</td>
-        <td>Order Id </td>
-        <td>User Name </td>
-        <td>Order date </td>
-        <td>Payment metdod</td>
-        <td>Payment Status</td>
-        <td>Order Status</td>
-        <td>Shipping Charges</td>
-        <td>Total Amount</td>
-      </tr>
+<style type="text/css">
+   table, td, th {
+   border: 1px solid black;
+   }
+   table {
+   border-collapse: collapse;
+   width: 100%;
+   }
+   .table-no-border tr td th{
+   border : none;
+   }
+   td {
+   height: 50px;
+   vertical-align: middle;
+   text-align: center;
+   }
+</style>
+<h4>Order List</h4><br>
+<table style="width:100%" class="table table-striped table-bordered table-hover">
+   <thead>
       <tr>
-          <?php $i = 1;foreach($orderlist as $orderlistdata){
-                            ?>
-            <tr>
-            
-            <td>{{ $i }}</td>
-            <td>{{$orderlistdata->order_id}} </td>
-            <td>{{ $orderlistdata->firstName }} {{ $orderlistdata->lastName }}</td>
-            <td>{{ $orderlistdata->orderdate }}</td>
-            <td>{{ $orderlistdata->paymentmethod }}</td>
-            <td>{{ $orderlistdata->paymentstatus }}</td>
-            <td>{{ $orderlistdata->orderstatus }}</td>
-            <td>{{ $orderlistdata->shipping_charges }}</td>
-            <td>{{ $orderlistdata->total_amount }}</td>
-           
-            </tr>
-            <?php $i++;}?>
+         <th>#</th>
+         <th>Order Id</th>
+         <th>User Name </th>
+         <th>Order date </th>
+         <th>Payment method</th>
+         <th >Payment Status</th>
+         <th >Order Status</th>
+         <th >Shipping Charges</th>
+         <th>Total Amount</th>
       </tr>
-      </tbody>
-    </table>
-  </body>
-</html>
+   </thead>
+   <tbody>
+      <?php $i = 1;foreach($orderlist as $orderlistdata){
+         ?>
+      <tr>
+         <td>{{ $i }}</td>
+         <td>{{$orderlistdata->order_id}} </td>
+         <td>{{ $orderlistdata->firstName }} {{ $orderlistdata->lastName }}</td>
+         <td>{{ $orderlistdata->orderdate }}</td>
+         <td>{{ $orderlistdata->paymentmethod }}</td>
+         <td>{{ $orderlistdata->paymentstatus }}</td>
+         <td>{{ $orderlistdata->orderstatus }}</td>
+         <td>{{ $orderlistdata->shipping_charges }}</td>
+         <td>{{ $orderlistdata->total_amount }}</td>
+      </tr>
+      <?php $i++;}?>
+   </tbody>
+</table>

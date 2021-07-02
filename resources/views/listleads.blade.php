@@ -61,9 +61,12 @@
                     </div>
                 </div>
             <div class="col-md-9 grid-margin stretch-card">
+
                <div class="card">
+
               <div class="card-body">
                 <h4 class="card-title">Data table</h4>
+                 <a href="{{ route('leadlistDownload') }}" class="btn btn-primary " target="_blank" style="">Export PDF</a>
                 <div class="row">
                   <div class="col-12">
                     <table id="order-listing" class="table">
