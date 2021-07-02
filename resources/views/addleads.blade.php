@@ -328,28 +328,31 @@
                         <div class="row">
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Lead Name</label>
-                          <input id="exampleInputUsername1" type="text" name="leadnamedata"  class="form-control" required>
+                          <input id="exampleInputUsername1" type="text" name="leadname"  class="form-control">
+                          <span style="color:red;">{{ $errors->first('leadname') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Alias Name</label>
                           <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="aliasname">
+                          <span style="color:red;">{{ $errors->first('aliasname') }}</span>
                         </div>
                         </div>
                         <div class="row">
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Prospect / Customer</label>
-                          <select class="form-control " name="customerprospect" id="customerprospect">
-                              <option >&nbsp;</option>
+                          <select class="form-control " name="prospect_customer" id="customerprospect">
+                              <option value="">&nbsp;</option>
                               <option value="Prospect">Prospect</option>
                               <option value="Prospect / Customer">Prospect / Customer</option>
                               <option value="Customer">Customer</option>
                               <option value="Not prospect, nor customer">Not prospect, nor customer</option>
                           </select>
+                          <span style="color:red;">{{ $errors->first('prospect_customer') }}</span>
                         </div><br><br>
                         <div class="form-group col-md-6">
                           <label for="exampleInputUsername1">Supplier</label>
                           <select class="form-control " name="supplier" id="supplier">
-                              <option >&nbsp;</option>
+                              <option>&nbsp;</option>
                               <option value="Yes">Yes</option>
                               <option value="No">No</option>
                           </select>
@@ -358,34 +361,41 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Status</label>
-                                  <select class="form-control " name="statusleads" id="statusleads">
+                                  <select class="form-control " name="status" id="statusleads">
+                                          <option value=""> &nbsp;</option>
                                           <option value="Closed">Closed</option>
                                           <option value="Open">Open</option>
                                   </select>
+                                  <span style="color:red;">{{ $errors->first('status') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Barcode</label>
-                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="barcodeleads">
+                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="barcode">
+                                  <span style="color:red;">{{ $errors->first('barcode') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Address</label>
-                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="addressleads">
+                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="address">
+                                  <span style="color:red;">{{ $errors->first('address') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Zip Code</label>
-                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="zipcodeleads">
+                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="zipcode">
+                                  <span style="color:red;">{{ $errors->first('zipcode') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">City</label>
-                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="cityleads">
+                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="city">
+                                  <span style="color:red;">{{ $errors->first('city') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Country</label>
-                                  <select class="form-control"  name="countryleads">
+                                  <select class="form-control"  name="country">
+                                        <option value=""></option>
                                         <?php
                                         foreach($countriesdata as $countriesdata)
                                         { ?>
@@ -393,50 +403,59 @@
                                                 <?php }
                                                 ?>
                                 </select>
+                                <span style="color:red;">{{ $errors->first('country') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">EMail</label>
-                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="emailleads">
+                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="email">
+                                  <span style="color:red;">{{ $errors->first('email') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Web</label>
-                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="webleads">
+                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="web">
+                                  <span style="color:red;">{{ $errors->first('web') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-2">
                                   <label for="exampleInputUsername1">Country Code</label>
-                                 <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="countrycode" required>
+                                 <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="countrycode">
+                                 <span style="color:red;">{{ $errors->first('countrycode') }}</span>
                             </div>
                             <div class="form-group col-md-4">
                                   <label for="exampleInputUsername1">Mobile</label>
-                                 <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="phoneleads" required>
+                                 <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="phone">
+                                 <span style="color:red;">{{ $errors->first('phone') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Fax</label>
-                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="faxleads">
+                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="fax">
+                                  <span style="color:red;">{{ $errors->first('fax') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Sales tax used</label>
-                                  <select class="form-control" id="saletaxleads" name="saletaxleads">
+                                  <select class="form-control" id="saletaxleads" name="salteax">
+                                          <option value=""></option>
                                         <option value="1" selected="">Yes</option>
                                         <option value="0">No</option>
                                 </select>
+                                <span style="color:red;">{{ $errors->first('salteax') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">VAT ID</label>
-                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="vatidleads">
+                                  <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="vatid">
+                                  <span style="color:red;">{{ $errors->first('vatid') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Third-party type</label>
-                                  <select id="typeleads" class="form-control" name="typeleads">
-                                     <option >&nbsp;</option>
+                                  <select id="typeleads" class="form-control" name="thirdparty">
+                                     <option value="">&nbsp;</option>
                                         <option value="Governmental">Governmental</option>
                                         <option value="Large company">Large company</option>
                                         <option value="Medium company">Medium company</option>
@@ -444,11 +463,12 @@
                                         <option value="8">Private individual</option>
                                         <option value="Small company">Small company</option>
                                 </select>
+                                <span style="color:red;">{{ $errors->first('thirdparty') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Employees</label><br>
-                              <select id="employeeleads" class="form-control" name="employeeleads">
-                                   <option value="0">&nbsp;</option>
+                              <select id="employeeleads" class="form-control" name="employees">
+                                   <option value="">&nbsp;</option>
                                     <option value="1 - 5">1 - 5</option>
                                     <option value="6 - 10">6 - 10</option>
                                     <option value="11 - 50">11 - 50</option>
@@ -456,13 +476,14 @@
                                     <option value="100 - 500">100 - 500</option>
                                     <option value="&gt; 500">&gt; 500</option>
                             </select>
+                            <span style="color:red;">{{ $errors->first('employees') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Cust./Prosp. tags/categories</label>
-                                  <select class="form-control"  name="categoriesleads">
-                                      <option value="0"> select</option>
+                                  <select class="form-control"  name="categories">
+                                      <option value=""> select</option>
                                         <?php
                                         foreach($categories as $categories)
                                         { ?>
@@ -470,6 +491,7 @@
                                                 <?php }
                                                 ?>
                                 </select>
+                                <span style="color:red;">{{ $errors->first('categories') }}</span>
                             </div><br><br>
                             <div class="form-group col-md-6">
                               <label for="exampleInputUsername1">Vendors tags/categories</label><br>
@@ -511,7 +533,7 @@
                              <div class="form-group col-md-6">
                                   <label for="exampleInputUsername1">Campegian</label>
                                   <select class="form-control"  name="campaign">
-                                      <option value="0">Select Campegian</option>
+                                      <option value="">Select Campegian</option>
                                         <?php
                                         foreach($crm_campaign as $crm_campaign)
                                         { ?>
@@ -519,17 +541,18 @@
                                                 <?php }
                                                 ?>
                                 </select>
+                                <span style="color:red;">{{ $errors->first('campaign') }}</span>
                             </div>
                         <div class="form-group col-md-6">
                               <label>Image</label>
-                                  <input type="file" name="imgleads" id="image" class="file-upload-default">
+                                  <input type="file" name="image" id="image" class="file-upload-default">
                                   <div class="input-group col-xs-6">
                                     <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                     <span class="input-group-append">
                                       <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
                                     </span>
                                   </div>
-                                  <span id="imageerrs"></span>
+                                  <span style="color:red;">{{ $errors->first('image') }}</span>
                             </div>
                         </div>
                     </div>

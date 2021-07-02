@@ -4936,39 +4936,42 @@ class Controller extends BaseController
         if($request->supplier == 'Yes')
         {
                  $info = array(
-                'leadname' => $request->leadnamedata,
-                'aliasname' => $request->aliasname,
-                'prospect_customer'   => $request->customerprospect,
-                'status'   => $request->statusleads,
-                'barcode' => $request->barcodeleads,
-                'address' => $request->addressleads,
-                'zipcode'   => $request->zipcodeleads,
-                'city'   => $request->cityleads,
-                'country'   => $request->countryleads,
-                'email' => $request->emailleads,
-                'web' => $request->webleads,
-                'countrycode' => $request->countrycode,
-                'phone'   => $request->phoneleads,
-                'fax'   => $request->faxleads,
-                'salteax'   => $request->saletaxleads,
-                'vatid'   => $request->vatidleads,
-                'thirdparty'   => $request->typeleads,
-                'employees'   => $request->employeeleads,
-                'categories'   => $request->categoriesleads,
-                'vendorstags'   => $request->vendorleads,
-                'salesgroup'   => $salesuser,
-                'salesuser'   => $request->saleuserleads,
-                'image'   => $galleryname,
                 'created_at' => date('Y-m-d'),
                 'updated_at' => date('Y-m-d'),
                 'accountstatus' => 'activated',
                 'created_by' => session('user_id'),
                 'created_by_type' => session('user_type'),
-                'campaign' => $request->campaign
-                
-                
-            );
-            
+                 );
+            $info = $this->validate($request,[
+                'leadname' => 'required',
+                'aliasname' => 'required',
+                'prospect_customer' => 'required',
+                'status' => 'required',
+                'barcode' => 'required',
+                'address' => 'required',
+                'zipcode' => 'required',
+                'city' => 'required',
+                'country' => 'required',
+                'email' => 'required',
+                'web' => 'required',
+                'countrycode' => 'required',
+                'phone' => 'required',
+                'fax' => 'required',
+                'salteax' => 'required',
+                'vatid' => 'required',
+                'thirdparty' => 'required',
+                'employees' => 'required',
+                'categories' => 'required',
+                'vendorstags' => 'required',
+                'salesgroup' => 'required',
+                'salesuser' => 'required',
+                'image' => 'required',
+                'created_at' => 'required',
+                'updated_at' => 'required',
+                'campaign' => 'required',
+            ]);
+            $info['salesgroup'] = $salesuser;
+            $info['image'] = $galleryname;
             $data = DB::table('suppliers')->insertGetId($info);
           
             if($data != '')
@@ -4981,40 +4984,43 @@ class Controller extends BaseController
             }
         }else
         {
-                $info = array(
-                'leadname' => $request->leadnamedata,
-                'aliasname' => $request->aliasname,
-                'prospect_customer'   => $request->customerprospect,
-                'vendor'   => $request->supplier,
-                'status'   => $request->statusleads,
-                'barcode' => $request->barcodeleads,
-                'address' => $request->addressleads,
-                'zipcode'   => $request->zipcodeleads,
-                'city'   => $request->cityleads,
-                'country'   => $request->countryleads,
-                'email' => $request->emailleads,
-                'web' => $request->webleads,
-                'countrycode' => $request->countrycode,
-                'phone'   => $request->phoneleads,
-                'fax'   => $request->faxleads,
-                'salteax'   => $request->saletaxleads,
-                'vatid'   => $request->vatidleads,
-                'thirdparty'   => $request->typeleads,
-                'employees'   => $request->employeeleads,
-                'categories'   => $request->categoriesleads,
-                'vendorstags'   => $request->vendorleads,
-                'salesgroup'   => $salesuser,
-                'salesuser'   => $request->saleuserleads,
-                'image'   => $galleryname,
+            $info = array(
                 'created_at' => date('Y-m-d'),
                 'updated_at' => date('Y-m-d'),
                 'accountstatus' => 'activated',
                 'created_by' => session('user_id'),
                 'created_by_type' => session('user_type'),
-                'campaign' => $request->campaign
-                
-                
-            );
+                 );
+            $info = $this->validate($request,[
+                'leadname' => 'required',
+                'aliasname' => 'required',
+                'prospect_customer' => 'required',
+                'status' => 'required',
+                'barcode' => 'required',
+                'address' => 'required',
+                'zipcode' => 'required',
+                'city' => 'required',
+                'country' => 'required',
+                'email' => 'required',
+                'web' => 'required',
+                'countrycode' => 'required',
+                'phone' => 'required',
+                'fax' => 'required',
+                'salteax' => 'required',
+                'vatid' => 'required',
+                'thirdparty' => 'required',
+                'employees' => 'required',
+                'categories' => 'required',
+                'vendorstags' => 'required',
+                'salesgroup' => 'required',
+                'salesuser' => 'required',
+                'image' => 'required',
+                'created_at' => 'required',
+                'updated_at' => 'required',
+                'campaign' => 'required',
+            ]);
+            $info['salesgroup'] = $salesuser;
+            $info['image'] = $galleryname;
             
             $data = DB::table('tbl_addnewlead')->insertGetId($info);
           
